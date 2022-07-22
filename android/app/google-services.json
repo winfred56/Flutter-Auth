@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "778647666545",
+    "project_id": "simp-auth",
+    "storage_bucket": "simp-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778647666545:android:22ac1808f44544d0db80d0",
+        "android_client_info": {
+          "package_name": "com.winfred.simp_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778647666545-lhlebtclvfa2hd1n3se0jn1lqecagepm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC27cG2iTmqz8jnuWuwRBy8iorXzQEiCxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778647666545-lhlebtclvfa2hd1n3se0jn1lqecagepm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
