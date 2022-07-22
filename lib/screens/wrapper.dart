@@ -1,10 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/screens/authentication/Sign_in.dart';
+import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('name'),color: Color(0xF32372),);
+    final user = Provider.of<User?>(context);
+    if (user == null){
+      return const SignIn();
+    }else{
+      return Container();
+    }
+
   }
 }
