@@ -22,9 +22,9 @@ class AuthenticationService{
     }
   }
 
-  Future signInWithEmailAndPassword(String email, String password) async{
+  Future registerWithEmailAndPassword(String email, String password) async{
     try {
-      UserCredential results = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential results = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       UserCredential user = results;
       print(user);
       return results.user;
