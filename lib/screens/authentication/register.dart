@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/screens/home/home.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 import 'package:flutter_auth/shared/loading.dart';
 
@@ -69,7 +67,7 @@ class _RegisterState extends State<Register> {
                             ),
                             const SizedBox(height: 20,),
                             TextFormField(
-                              decoration: LoginFormStyle.formDecoration.copyWith(hintText: "Pasword"),
+                              decoration: LoginFormStyle.formDecoration.copyWith(hintText: "Password"),
                               obscureText: true,
                               validator: (val)=> val!.length < 4 ? 'Enter a valid password' : null,
                               onChanged: (val){
@@ -86,11 +84,8 @@ class _RegisterState extends State<Register> {
                               onPressed: ()async{
                                 _formkey.currentState?.validate() ?? setState((){
                                   loading = true;
-                                  print(email);
-                                  print(password);
                                 });
                                 dynamic results = await _auth.registerWithEmailAndPassword(email, password);
-                                print(results);
                                 if(results == null){
                                   setState((){
                                     loading = false;
@@ -99,7 +94,7 @@ class _RegisterState extends State<Register> {
 
                                 }
                               },
-                              child: Text('Register'),
+                              child: const Text('Register'),
                             ),
                             Text(error,
                               style: const TextStyle(
@@ -113,7 +108,7 @@ class _RegisterState extends State<Register> {
                                   Icons.login,
                                   color: Colors.black,
                                 ),
-                                    label: const Text("Alrerady Have an Account? Login"))
+                                    label: const Text("Already Have an Account? Login"))
 
                             )],
                         ),
