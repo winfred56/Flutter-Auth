@@ -4,6 +4,7 @@ import 'package:flutter_auth/screens/home/home.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 import 'package:flutter_auth/shared/loading.dart';
 
+import '../../shared/formDecoration.dart';
 import '../../shared/header_widget.dart';
 
 
@@ -58,6 +59,7 @@ class _RegisterState extends State<Register> {
                           children: [
                             const SizedBox(height: 20.0,),
                             TextFormField(
+                              decoration: LoginFormStyle.formDecoration.copyWith(hintText: " Enter Your Student Email"),
                               validator: (val) => val!.endsWith('@st.knust.edu.gh') ? null : "Enter a valid Email address",
                               onChanged: (val){
                                 setState(() {
@@ -65,7 +67,9 @@ class _RegisterState extends State<Register> {
                                 });
                               },
                             ),
+                            const SizedBox(height: 20,),
                             TextFormField(
+                              decoration: LoginFormStyle.formDecoration.copyWith(hintText: "Pasword"),
                               obscureText: true,
                               validator: (val)=> val!.length < 4 ? 'Enter a valid password' : null,
                               onChanged: (val){
