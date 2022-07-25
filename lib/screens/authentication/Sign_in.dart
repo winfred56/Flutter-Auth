@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../../shared/header_widget.dart';
 import '../../shared/loading.dart';
@@ -82,13 +83,6 @@ class _SignInState extends State<SignIn> {
                                         print(email);
                                         print(password);
                                       });
-                                      // if (_formkey.currentState!.validate()){
-                                      //   setState(() {
-                                      //     loading = true;
-                                      //   });
-                                      // }
-                                      // print(email);
-                                      // print(password);
                                       dynamic results = await _auth.signInWithEmailAndPassword(email, password);
                                       print(results);
                                       if(results == null){
@@ -106,8 +100,16 @@ class _SignInState extends State<SignIn> {
                                       color: Colors.red,
                                       fontSize: 14.0
                                   ),
-                                )
-                        ]
+                                ),
+                                const SizedBox(height: 90,),
+                                TextButton(onPressed: (){},
+                                    child: TextButton.icon(onPressed: () => widget.toggleView(), icon: const Icon(
+                                      Icons.person_add_alt_1_outlined,
+                                      color: Colors.black,
+                                    ),
+                                        label: const Text("Create an account"))
+
+                                )],
                       ),
                       ),
                     ],
