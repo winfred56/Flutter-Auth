@@ -67,12 +67,17 @@ class _SignInState extends State<SignIn> {
               ),
               ElevatedButton(onPressed: ()async{
                 if (_formkey.currentState!.validate()){
-                  loading = true;
+                  setState(() {
+                    loading = true;
+                  });
                   dynamic results = await _auth.signInWithEmailAndPassword(email, password);
                   print(results);
                   if(results == null){
-                    loading = false;
-                    error = 'Enter valid Credentials';
+                    setState((){
+                      loading = false;
+                      error = 'Enter valid Credentials';
+                    });
+
                   }
                 }
               },

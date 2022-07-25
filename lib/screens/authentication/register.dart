@@ -69,14 +69,16 @@ class _RegisterState extends State<Register> {
               ),
               ElevatedButton(onPressed: ()async{
                 if (_formkey.currentState!.validate()){
-                  loading = true;
+                  setState(() {
+                    loading = true;
+                  });
                   dynamic results = await _auth.registerWithEmailAndPassword(email, password);
                   print(results);
                   if(results == null){
-                    setState(){
+                    setState((){
                       loading = false;
                       error = 'Enter valid Credentials';
-                    }
+                    });
                   }
                 }
               },
