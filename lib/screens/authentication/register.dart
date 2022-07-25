@@ -35,7 +35,7 @@ class _RegisterState extends State<Register> {
           children: [
             SizedBox(
               height: _headerHeight,
-              child: HeaderWidget(_headerHeight, true, Icons.login_rounded), //let's create a common header widget
+              child: HeaderWidget(_headerHeight, true, Icons.person_add_alt_1_outlined), //let's create a common header widget
             ),
             SafeArea(
               child: Container(
@@ -44,8 +44,8 @@ class _RegisterState extends State<Register> {
                   child: Column(
                     children: [
                       const Text(
-                        'Welcome',
-                        style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                        'Join Today!',
+                        style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                       ),
                       const Text(
                         'Register with Us',

@@ -96,7 +96,7 @@ class _SignInState extends State<SignIn> {
 
                                       }
                                     },
-                                    child: Text('Sign In'),
+                                    child: const Text('Sign In'),
                                 ),
                                 Text(error,
                                   style: const TextStyle(
