@@ -27,8 +27,24 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return loading ? const Loading() : Scaffold(
       appBar: AppBar(
-        title: Text('Log In'),
+        title: const Text('Register With Us'),
         elevation: 0.0,
+          actions: [
+            TextButton.icon(onPressed: (){
+             // widget.toggleView();
+            },
+              icon: const Icon(
+                Icons.person_add_alt,
+                color: Colors.white,
+              ),
+              label: const Text(
+                "Sign In",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ]
 
       ),
       body: Form(
@@ -56,14 +72,22 @@ class _RegisterState extends State<Register> {
                   dynamic results = await _auth.registerWithEmailAndPassword(email, password);
                   print(results);
                   if(results == null){
-                    loading = false;
-                    error = 'Enter valid Credentials';
+                    setState(){
+                      loading = false;
+                      error = 'Enter valid Credentials';
+                    }
                   }
                 }
               },
-                  child: Text('Enter')
-              )
-            ]
+                  child: const Text('Register')
+              ),
+          Text(error,
+              style: const TextStyle(
+                  color: Colors.red,
+                  fontSize: 14.0
+              ),
+          )
+          ]
         ),
       ),
     );
