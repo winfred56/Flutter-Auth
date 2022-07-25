@@ -1,5 +1,5 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/shared/formDecoration.dart';
 import '../../shared/header_widget.dart';
 import '../../shared/loading.dart';
 import 'package:flutter_auth/services/auth_service.dart';
@@ -56,6 +56,7 @@ class _SignInState extends State<SignIn> {
                               children: [
                                 const SizedBox(height: 20.0,),
                                 TextFormField(
+                                  decoration: LoginFormStyle.formDecoration.copyWith(hintText: "Student Email"),
                                   validator: (val) => val!.endsWith('@st.knust.edu.gh') ? null : "Enter a valid Email address",
                                   onChanged: (val){
                                     setState(() {
@@ -63,7 +64,9 @@ class _SignInState extends State<SignIn> {
                                     });
                                     },
                                 ),
+                                const SizedBox(height: 20,),
                                 TextFormField(
+                                  decoration: LoginFormStyle.formDecoration.copyWith(hintText: "Password"),
                                   obscureText: true,
                                   validator: (val)=> val!.length < 4 ? 'Enter a valid password' : null,
                                   onChanged: (val){

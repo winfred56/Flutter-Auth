@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
-  Color _primaryColor = HexColor('#630c0c');
-  Color _secondary = HexColor('#c19e9e');
+  final Color _primaryColor = HexColor('#630c0c');
+  final Color _secondary = HexColor('#c19e9e');
 
   @override
   Widget build(BuildContext context) {
