@@ -6,7 +6,8 @@ import 'package:flutter_auth/shared/loading.dart';
 
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  final Function toggleView;
+  const Register({Key? key, required this.toggleView}) : super(key: key);
 
   @override
   State<Register> createState() => _RegisterState();
@@ -31,7 +32,7 @@ class _RegisterState extends State<Register> {
         elevation: 0.0,
           actions: [
             TextButton.icon(onPressed: (){
-             // widget.toggleView();
+             widget.toggleView();
             },
               icon: const Icon(
                 Icons.person_add_alt,

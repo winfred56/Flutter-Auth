@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/screens/authentication/Sign_in.dart';
-import 'package:flutter_auth/screens/authentication/register.dart';
+import 'package:flutter_auth/screens/authentication/authenticate.dart';
 import 'package:provider/provider.dart';
 import 'home/home.dart';
 
@@ -12,7 +11,7 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<User?>(context);
     if (user == null){
-      return const SignIn();
+      return const Authenticate();
     }else{
       return const Home();
     }

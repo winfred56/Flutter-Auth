@@ -5,7 +5,8 @@ import 'package:flutter_auth/services/auth_service.dart';
 
 
 class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+  final Function toggleView;
+  const SignIn({Key? key, required this.toggleView}) : super(key: key);
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -30,7 +31,7 @@ class _SignInState extends State<SignIn> {
         elevation: 0.0,
           actions: [
             TextButton.icon(onPressed: (){
-              //widget.toggleView();
+              widget.toggleView();
             },
               icon: const Icon(
                 Icons.login,
@@ -75,7 +76,7 @@ class _SignInState extends State<SignIn> {
                   }
                 }
               },
-                  child: Text('Enter')
+                  child: Text('Sign In')
               )
             ]
         ),
