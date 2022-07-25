@@ -29,7 +29,10 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    return loading ? const Loading() : Scaffold(
+    if (loading) {
+      return const Loading();
+    } else {
+      return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -69,7 +72,7 @@ class _RegisterState extends State<Register> {
                             TextFormField(
                               decoration: LoginFormStyle.formDecoration.copyWith(hintText: "Password"),
                               obscureText: true,
-                              validator: (val)=> val!.length < 4 ? 'Enter a valid password' : null,
+                              validator: (val) => val!.length < 4 ? 'Enter a valid password' : null,
                               onChanged: (val){
                                 setState(() {
                                   password = val;
@@ -121,5 +124,6 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+    }
   }
 }
