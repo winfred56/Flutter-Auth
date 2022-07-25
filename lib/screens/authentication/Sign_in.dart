@@ -122,6 +122,3 @@ class _SignInState extends State<SignIn> {
     );
   }
 }
-
-
-//Color.fromRGBO(99, 12, 12, 100),
