@@ -28,6 +28,7 @@ class _SignInState extends State<SignIn> {
     return loading ? const Loading() : Scaffold(
       appBar: AppBar(
         title: Text('Log In'),
+          backgroundColor: Color.fromRGBO(99, 12, 12, 100),
         elevation: 0.0,
           actions: [
             TextButton.icon(onPressed: (){
@@ -65,7 +66,11 @@ class _SignInState extends State<SignIn> {
                   setState(() => password = val);
                 },
               ),
-              ElevatedButton(onPressed: ()async{
+              ElevatedButton(
+                  style:ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(99, 12, 12, 80)),
+                  ),
+                  onPressed: ()async{
                 if (_formkey.currentState!.validate()){
 
                   setState(() {
