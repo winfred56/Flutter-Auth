@@ -9,6 +9,12 @@ class AuthenticationService{
 // First create an Instance of the class FirebaseAuth
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  // Create a Stream to check changes in authentications( ie login and logout)
+  Stream<User?> getUser(){
+    //print(_auth.authStateChanges());
+    return _auth.authStateChanges();
+  }
+
 // A Function to handle Anonymous Sign In
   Future signInAnonymous() async {
     try {
