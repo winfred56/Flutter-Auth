@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import '../../shared/header_widget.dart';
 import '../../shared/loading.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 
@@ -20,87 +20,106 @@ class _SignInState extends State<SignIn> {
   String error = '';
   bool loading = false;
 
+  final double _headerHeight = 250;
+
 
   final AuthenticationService _auth = AuthenticationService();
   @override
   Widget build(BuildContext context) {
 
     return loading ? const Loading() : Scaffold(
-      appBar: AppBar(
-        title: Text('Log In'),
-          backgroundColor: Color.fromRGBO(99, 12, 12, 100),
-        elevation: 0.0,
-          actions: [
-            TextButton.icon(onPressed: (){
-              widget.toggleView();
-            },
-              icon: const Icon(
-                Icons.login,
-                color: Colors.white,
-              ),
-              label: const Text(
-                "Register",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: _headerHeight,
+              child: HeaderWidget(_headerHeight, true, Icons.login_rounded), //let's create a common header widget
+            ),
+            SafeArea(
+              child: Container(
+                  padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),// This will be the login form
+                  child: Column(
+                    children: [
+                      const Text(
+                        'Welcome',
+                        style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                      ),
+                      const Text(
+                        'Sign In into your account',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      const SizedBox(height: 30.0),
+                      Form(
+                          child: Column(
+                              children: [
+                                const SizedBox(height: 20.0,),
+                                TextFormField(
+                                  validator: (val) => val!.endsWith('@st.knust.edu.gh') ? null : "Enter a valid Email address",
+                                  onChanged: (val){
+                                    setState(() {
+                                      email = val;
+                                    });
+                                    },
+                                ),
+                                TextFormField(
+                                  obscureText: true,
+                                  validator: (val)=> val!.length < 4 ? 'Enter a valid password' : null,
+                                  onChanged: (val){
+                                    setState(() {
+                                      password = val;
+
+                                    });
+                                  },
+                                ),
+                                ElevatedButton(
+                                    style:ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(99, 12, 12, 80)),
+                                    ),
+                                    onPressed: ()async{
+                                      _formkey.currentState?.validate() ?? setState((){
+                                        loading = true;
+                                        print(email);
+                                        print(password);
+                                      });
+                                      // if (_formkey.currentState!.validate()){
+                                      //   setState(() {
+                                      //     loading = true;
+                                      //   });
+                                      // }
+                                      // print(email);
+                                      // print(password);
+                                      dynamic results = await _auth.signInWithEmailAndPassword(email, password);
+                                      print(results);
+                                      if(results == null){
+                                        setState((){
+                                          loading = false;
+                                          error = 'Enter valid Credentials';
+                                        });
+
+                                      }
+                                    },
+                                    child: Text('Sign In'),
+                                ),
+                                Text(error,
+                                  style: const TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 14.0
+                                  ),
+                                )
+                        ]
+                      ),
+                      ),
+                    ],
+                  )
               ),
             ),
-          ]
-      ),
-      body: Form(
-        key: _formkey,
-        child: Column(
-            children: [
-              const SizedBox(height: 20.0,),
-              TextFormField(
-                //decoration: formDecoration.copyWith(hintText: "Email"),
-                validator: (val) => val!.endsWith('@st.knust.edu.gh') ? null : "Enter a valid Email address",
-                onChanged: (val){
-                  setState(() => email = val);
-                },
-              ),
-              TextFormField(
-                obscureText: true,
-                validator: (val)=> val!.length < 4 ? 'Enter a valid password' : null,
-                onChanged: (val){
-                  setState(() => password = val);
-                },
-              ),
-              ElevatedButton(
-                  style:ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(99, 12, 12, 80)),
-                  ),
-                  onPressed: ()async{
-                if (_formkey.currentState!.validate()){
-
-                  setState(() {
-                    loading = true;
-                  });
-
-                  dynamic results = await _auth.signInWithEmailAndPassword(email, password);
-
-                  print(results);
-
-                  if(results == null){
-                    setState((){
-                      loading = false;
-                      error = 'Enter valid Credentials';
-                    });
-
-                  }
-                }
-              },
-                  child: Text('Sign In')
-              ),
-              Text(error,
-                style: const TextStyle(
-                    color: Colors.red,
-                    fontSize: 14.0
-                ),
-              )
-            ]
+          ],
         ),
       ),
     );
   }
 }
+
+
+//Color.fromRGBO(99, 12, 12, 100),

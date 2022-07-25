@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(99, 12, 12, 100),
+        backgroundColor: Color.fromRGBO(99, 12, 12, 10),
         title: const Text('Welcome To the Home Screen'),
           actions: [
             TextButton.icon(onPressed: () async {

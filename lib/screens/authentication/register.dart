@@ -29,7 +29,7 @@ class _RegisterState extends State<Register> {
     return loading ? const Loading() : Scaffold(
       appBar: AppBar(
         title: const Text('Register With Us'),
-          backgroundColor: Color.fromRGBO(99, 12, 12, 100),
+          backgroundColor: Color.fromRGBO(99, 12, 12, 10),
         elevation: 0.0,
           actions: [
             TextButton.icon(onPressed: (){
@@ -70,7 +70,7 @@ class _RegisterState extends State<Register> {
               ),
               ElevatedButton(
                   style:ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(99, 12, 12, 80)),
+                    backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(99, 12, 12, 70)),
                   ),
                   onPressed: ()async{
                 if (_formkey.currentState!.validate()){

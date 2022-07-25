@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class Loading extends StatelessWidget {
   const Loading({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         backgroundColor: Color.fromRGBO(99, 12, 12, 100),
         body: Center(
         child: SpinKitChasingDots(
-        color: Color.fromRGBO(12, 99, 12, 100),
+        color: HexColor('#732424'),
         size: 50.0
     )
     )
