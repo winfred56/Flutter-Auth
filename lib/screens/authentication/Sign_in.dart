@@ -67,11 +67,15 @@ class _SignInState extends State<SignIn> {
               ),
               ElevatedButton(onPressed: ()async{
                 if (_formkey.currentState!.validate()){
+
                   setState(() {
                     loading = true;
                   });
+
                   dynamic results = await _auth.signInWithEmailAndPassword(email, password);
+
                   print(results);
+
                   if(results == null){
                     setState((){
                       loading = false;
@@ -82,6 +86,12 @@ class _SignInState extends State<SignIn> {
                 }
               },
                   child: Text('Sign In')
+              ),
+              Text(error,
+                style: const TextStyle(
+                    color: Colors.red,
+                    fontSize: 14.0
+                ),
               )
             ]
         ),
