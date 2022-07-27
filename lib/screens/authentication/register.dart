@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 import 'package:flutter_auth/shared/loading.dart';
-
 import '../../shared/formDecoration.dart';
 import '../../shared/header_widget.dart';
 
@@ -94,19 +93,22 @@ class _RegisterState extends State<Register> {
                                     loading = false;
                                     error = 'Enter valid Credentials';
                                   });
-
                                 }
                               },
-                              child: const Text('Register'),
+                              child: const Text(
+                                  'Register'
+                              ),
                             ),
-                            Text(error,
+                            Text(
+                              error,
                               style: const TextStyle(
                                   color: Colors.red,
                                   fontSize: 14.0
                               ),
                             ),
                             const SizedBox(height: 90,),
-                            TextButton(onPressed: (){},
+                            TextButton(
+                                onPressed: (){},
                                 child: TextButton.icon(onPressed: () => widget.toggleView(), icon: const Icon(
                                   Icons.login,
                                   color: Colors.black,
