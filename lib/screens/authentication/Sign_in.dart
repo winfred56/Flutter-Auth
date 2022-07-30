@@ -56,7 +56,7 @@ class _SignInState extends State<SignIn> {
                               children: [
                                 const SizedBox(height: 20.0,),
                                 TextFormField(
-                                  decoration: LoginFormStyle.formDecoration.copyWith(hintText: "Student Email"),
+                                  decoration: LoginFormStyle.formDecoration.copyWith(hintText: "Email@st.knust.edu.g"),
                                   validator: (val) => val!.endsWith('@st.knust.edu.gh') ? null : "Enter a valid Email address",
                                   onChanged: (val){
                                     setState(() {
