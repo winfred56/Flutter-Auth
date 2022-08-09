@@ -20,7 +20,7 @@ class AuthenticationService{
     try {
       UserCredential results = await  _auth.signInAnonymously();
       UserCredential user = results;
-      print(user);
+      //print(user);
       return results.user;
     } on Exception catch (e) {
       print(e.toString());
