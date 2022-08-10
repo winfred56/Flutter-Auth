@@ -34,6 +34,29 @@ class _HomeState extends State<Home> {
             ),
           ]
       ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Stepper(
+              type: StepperType.horizontal,
+              onStepCancel: (){},
+              onStepContinue: (){},
+              steps: const[
+                Step(
+                    title: Text('Choose'),
+                    content: Text('Something'),
+                    isActive: true
+                ),
+                Step(
+                    title: Text('Vote'),
+                    content: Text('Something'),
+                    isActive: false
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
