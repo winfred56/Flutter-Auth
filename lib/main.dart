@@ -28,11 +28,12 @@ class MyApp extends StatelessWidget {
           home: Wrapper(),
         ),
       ),
+
       ChangeNotifierProvider(
           create: (_) => VoteState()
       )
     ],
-      child: const MaterialApp(debugShowCheckedModeBanner: false,home: Wrapper(),)
+      child: const MaterialApp(debugShowCheckedModeBanner: true,home: Wrapper(),)
     );
     // return StreamProvider<User?>.value(
     //     value: AuthenticationService().getUser(),

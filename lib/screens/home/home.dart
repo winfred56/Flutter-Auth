@@ -67,9 +67,16 @@ class _HomeState extends State<Home> {
                 ),
               ],
               onStepContinue: (){
-                setState(() {
-                  _currentStep = (_currentStep+1) > 1 ? 1: _currentStep+1;
-                });
+                if (_currentStep == 0){
+                  if(step2Required()){
+                    setState(() {
+                      _currentStep = (_currentStep+1) > 1 ? 1: _currentStep+1;
+                    });
+                  }
+                  else{
+                    showSnackBar(context, "Select Category");
+                  }
+                }
               },
               onStepCancel: (){
                 setState(() {
@@ -81,5 +88,21 @@ class _HomeState extends State<Home> {
         ],
       ),
     );
+  }
+  void showSnackBar(BuildContext context, msg){
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("Hello",
+          style: TextStyle(fontSize: 22),
+        ),
+      )
+    );
+  }
+
+  bool step2Required(){
+    if(Provider.of<VoteState>(context, listen: false).activeVote==null){
+      return false;
+    }
+    return true;
   }
 }

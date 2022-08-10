@@ -6,8 +6,8 @@ import 'package:flutter_auth/services/voteList.dart';
 class VoteState with ChangeNotifier{
   // Create an instance of the VoteCategory class
   List<VoteCategory> _voteList = <VoteCategory>[];
-  late VoteCategory? _activeVote;
-  late String? _selectedCandidateInActiveVote;
+  VoteCategory? _activeVote;
+  String? _selectedCandidateInActiveVote;
 
 
   void loadVoteList()async{
@@ -24,7 +24,7 @@ class VoteState with ChangeNotifier{
   VoteCategory? get activeVote => _activeVote;
   String? get selectedCandidateInActiveVote => _selectedCandidateInActiveVote;
 
-  set activeVote(newValue){
+  set activeVote(newValue) {
     activeVote = newValue;
     notifyListeners();
   }
