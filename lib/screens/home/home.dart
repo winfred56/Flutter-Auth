@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/services/auth_service.dart';
+import 'package:flutter_auth/shared/voteList.dart';
+import 'package:flutter_auth/state/vote.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,8 +15,15 @@ class _HomeState extends State<Home> {
 
   final AuthenticationService _auth = AuthenticationService();
   int _currentStep = 0;
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
 
-
+      Provider.of<VoteState>(context, listen: false).clearState();
+      Provider.of<VoteState>(context, listen: false).loadVoteList();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +55,9 @@ class _HomeState extends State<Home> {
               type: StepperType.horizontal,
 
               steps: [
-                Step(
-                    title: const Text('Choose'),
-                    content: Text('Something'),
+                const Step(
+                    title: Text('Choose'),
+                    content: VoteList(),
                     isActive: true
                 ),
                 Step(
