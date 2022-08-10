@@ -9,7 +9,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   final AuthenticationService _auth = AuthenticationService();
+  int _currentStep = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,21 +41,31 @@ class _HomeState extends State<Home> {
         children: [
           Expanded(
             child: Stepper(
+              currentStep: _currentStep,
               type: StepperType.horizontal,
-              onStepCancel: (){},
-              onStepContinue: (){},
-              steps: const[
+
+              steps: [
                 Step(
-                    title: Text('Choose'),
+                    title: const Text('Choose'),
                     content: Text('Something'),
                     isActive: true
                 ),
                 Step(
-                    title: Text('Vote'),
+                    title: const Text('Vote'),
                     content: Text('Something'),
-                    isActive: false
+                    isActive: _currentStep >= 1 ? true : false
                 ),
               ],
+              onStepContinue: (){
+                setState(() {
+                  _currentStep = (_currentStep+1) > 1 ? 1: _currentStep+1;
+                });
+              },
+              onStepCancel: (){
+                setState(() {
+                  _currentStep = (_currentStep-1) < 0 ? 0: _currentStep-1;
+                });
+              },
             ),
           )
         ],
