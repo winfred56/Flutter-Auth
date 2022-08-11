@@ -24,7 +24,7 @@ class VoteState with ChangeNotifier{
   VoteCategory? get activeVote => _activeVote;
   String? get selectedCandidateInActiveVote => _selectedCandidateInActiveVote;
 
-  set activeVote(newValue) {
+  set activeVote(dynamic newValue) {
     activeVote = newValue;
     notifyListeners();
   }

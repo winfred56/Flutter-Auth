@@ -31,7 +31,7 @@ class VoteList extends StatelessWidget {
                     ),
                   ),
                   onTap: (){
-                    Provider.of<VoteState>(context, listen: false).activeVote = vote;
+                    Provider.of<VoteState>(context, listen: false).activeVote= vote;
                     //print(vote.voteTitle);
                   },
                   selected: activeVoteCategoryId == vote.voteCategoryId ? true : false ,
