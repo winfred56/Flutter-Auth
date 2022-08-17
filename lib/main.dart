@@ -33,7 +33,9 @@ class MyApp extends StatelessWidget {
           create: (_) => VoteState()
       )
     ],
-      child: const MaterialApp(debugShowCheckedModeBanner: true,home: Wrapper(),)
+      child: const MaterialApp(debugShowCheckedModeBanner: false,
+        home: Wrapper(),
+      )
     );
     // return StreamProvider<User?>.value(
     //     value: AuthenticationService().getUser(),
