@@ -22,16 +22,16 @@ List<VoteCategory> getVoteList(){
       voteTitle: "Repulic Hall Presidential Elections",
       candidates: [
         {"Abraham Kwarteng Rockson": 122},
-        {"Gideon Karikari": 92},
-        {"Obeng Bright": 26},
+        {"Phil Foden": 92},
+        {"Raheem Sterling": 26},
       ]));
   voteList.add(VoteCategory(
       voteCategoryId: Uuid().v4(),
       voteTitle: "College Of Science General Secretary Elections",
       candidates: [
-        {"Adu-Acheampong Winfred": 12022},
-        {"Adu Amankwah Kelvin": 22},
-        {"John Doe": 36},
+        {"Christiano Ronaldo": 12022},
+        {"Asamoah Gyan": 22},
+        {"Marcus Rashford": 36},
       ]));
   return voteList;
 }
