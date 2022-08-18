@@ -27,9 +27,10 @@ class VoteWidget extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: Text(
               activeVote!.voteTitle,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
+                color: HexColor('#732424'),
               ),
             ),
           ),
@@ -37,27 +38,38 @@ class VoteWidget extends StatelessWidget {
         ),
         for(String candidate in candidates)
           Card(
-            child: Row(
-              children: [
-                Container(
-                  constraints: BoxConstraints(minHeight: 60),
-                  width: 8,
-                  color: HexColor('#732424'),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 10, right: 5),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      candidate,
-                      maxLines: 5,
-                      style: const TextStyle(
-                        fontSize: 18,
-                      ),
+            child: InkWell(
+              onTap: (){
+                Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote = candidate;
+              },
+              child: IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      constraints: const BoxConstraints(minHeight: 60),
+                      width: 8,
+                      color: Colors.greenAccent,
                     ),
-                  ),
-                )
-              ],
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 10, right: 5),
+                        alignment: Alignment.centerLeft,
+                        color: Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == candidate
+                            ? Colors.greenAccent
+                            : Colors.white,
+                        child: Text(
+                          candidate,
+                          maxLines: 5,
+                          style: const TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
           ),
       ],

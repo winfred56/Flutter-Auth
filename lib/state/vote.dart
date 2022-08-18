@@ -30,7 +30,7 @@ class VoteState with ChangeNotifier{
   }
 
   set selectedCandidateInActiveVote(String? newValue){
-    selectedCandidateInActiveVote = newValue;
+    _selectedCandidateInActiveVote = newValue;
     notifyListeners();
   }
 }
