@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
   void showSnackBar(BuildContext context, msg){
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text("Please Select An Option",
+        content: Text("Please Select Vote Category",
           style: TextStyle(fontSize: 22),
         ),
       )

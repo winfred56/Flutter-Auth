@@ -11,9 +11,10 @@ class VoteList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    String activeVoteCategoryId =Provider.of<VoteState>(context, listen: false).activeVote?.voteCategoryId ?? "" ;
+
     return Consumer<VoteState>(
       builder: (context, voteState, child){
+        String activeVoteCategoryId =Provider.of<VoteState>(context, listen: false).activeVote?.voteCategoryId ?? "" ;
         return Column(
           children: [
             for (VoteCategory vote in voteState.voteList )
@@ -36,10 +37,6 @@ class VoteList extends StatelessWidget {
                     //Provider.of<VoteState>(context, listen: false).activeVote = vote;
                     //print(vote.voteTitle);
                   },
-                  // onTap: (){
-                  //   print(vote.voteTitle);
-                  //
-                  // },
                   selected: activeVoteCategoryId == vote.voteCategoryId ? true : false ,
 
                 ),
