@@ -11,6 +11,6 @@ class VoteCategory{
 // class Voter{
 //   late String uid;
 //   late String voterId;
-//   late int markedCaandidate;
+//   late int markedCandidate;
 //   late bool voted;
 // }

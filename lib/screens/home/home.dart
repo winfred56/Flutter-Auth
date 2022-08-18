@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/services/auth_service.dart';
+import 'package:flutter_auth/shared/vote.dart';
 import 'package:flutter_auth/shared/voteList.dart';
 import 'package:flutter_auth/state/vote.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +63,7 @@ class _HomeState extends State<Home> {
                 ),
                 Step(
                     title: const Text('Vote'),
-                    content: Text('Something'),
+                    content: const VoteWidget(),
                     isActive: _currentStep >= 1 ? true : false
                 ),
               ],
@@ -79,7 +80,6 @@ class _HomeState extends State<Home> {
                 }
               },
               onStepCancel: (){
-                print(_currentStep);
                 if (_currentStep <=1 ){
                   setState(() {
                     Provider.of<VoteState>(context, listen: false).activeVote = null;
