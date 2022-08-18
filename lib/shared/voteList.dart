@@ -32,7 +32,8 @@ class VoteList extends StatelessWidget {
                   ),
                   selectedTileColor: Colors.transparent,
                   onTap: (){
-                    Provider.of<VoteState>(context, listen: false).activeVote = vote;
+                    voteState.activeVote = vote;
+                    //Provider.of<VoteState>(context, listen: false).activeVote = vote;
                     //print(vote.voteTitle);
                   },
                   // onTap: (){
