@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/screens/results/results.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 import 'package:flutter_auth/shared/vote.dart';
 import 'package:flutter_auth/shared/voteList.dart';
@@ -68,6 +69,7 @@ class _HomeState extends State<Home> {
                 ),
               ],
               onStepContinue: (){
+                print(_currentStep);
                 if (_currentStep == 0){
                   if(step2Required()){
                     setState(() {
@@ -76,6 +78,13 @@ class _HomeState extends State<Home> {
                   }
                   else{
                     showSnackBar(context, "Select Category");
+                  }
+                }
+                else if (_currentStep >= 0){
+                  if(step3Required()){
+                    Navigator.pushReplacementNamed(context, '/results');
+                  }else{
+                    showSnackBar(context, "Please cast your vote!");
                   }
                 }
               },
@@ -98,18 +107,23 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-  void showSnackBar(BuildContext context, msg){
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Please Select Vote Category",
-          style: TextStyle(fontSize: 22),
-        ),
-      )
-    );
+  void showSnackBar(BuildContext context, String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(
+        msg,
+        style: const TextStyle(fontSize: 22),
+      ),
+    ));
   }
 
   bool step2Required(){
-    if(Provider.of<VoteState>(context, listen: false).activeVote==null){
+    if(Provider.of<VoteState>(context, listen: false).activeVote == null){
+      return false;
+    }
+    return true;
+  }
+  bool step3Required(){
+    if(Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == null){
       return false;
     }
     return true;

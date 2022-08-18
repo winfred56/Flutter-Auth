@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_auth/screens/results/results.dart';
 import 'package:flutter_auth/screens/wrapper.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -19,22 +20,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers: [
+    return MultiProvider(
+        providers: [
       StreamProvider<User?>.value(
         value: AuthenticationService().getUser(),
         initialData: null,
-        child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: Wrapper(),
-        ),
+        // child: const MaterialApp(
+        //   debugShowCheckedModeBanner: false,
+        //   home: Wrapper(),
+        // ),
       ),
 
       ChangeNotifierProvider(
           create: (_) => VoteState()
       )
     ],
-      child: const MaterialApp(debugShowCheckedModeBanner: false,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Wrapper(),
+        routes: {
+          '/results': (context) => const Results(),
+        },
       )
     );
     // return StreamProvider<User?>.value(
