@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
                 if (_currentStep == 0){
                   if(step2Required()){
                     setState(() {
-                      _currentStep = (_currentStep+1) > 1 ? 1: _currentStep+1;
+                      _currentStep = (_currentStep + 1) > 1 ? 1 : _currentStep+1;
                     });
                   }
                   else{
@@ -79,8 +79,17 @@ class _HomeState extends State<Home> {
                 }
               },
               onStepCancel: (){
+                print(_currentStep);
+                if (_currentStep <=1 ){
+                  setState(() {
+                    Provider.of<VoteState>(context, listen: false).activeVote = null;
+                  });
+                }
+                // else if (_currentStep <= 1){
+                //
+                // }
                 setState(() {
-                  _currentStep = (_currentStep-1) < 0 ? 0: _currentStep-1;
+                  _currentStep = (_currentStep - 1) < 0 ? 0: _currentStep-1;
                 });
               },
             ),
