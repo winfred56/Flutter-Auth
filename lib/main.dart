@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_auth/screens/home/home.dart';
 import 'package:flutter_auth/screens/results/results.dart';
 import 'package:flutter_auth/screens/wrapper.dart';
 import 'package:flutter_auth/services/auth_service.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Wrapper(),
         routes: {
+          '/home': (context) => const Home(),
           '/results': (context) => const Results(),
         },
       )

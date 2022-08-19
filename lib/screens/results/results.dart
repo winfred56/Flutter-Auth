@@ -10,7 +10,9 @@ class Results extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Live Feed"),
         leading: IconButton(
-          onPressed: (){},
+          onPressed: (){
+            Navigator.pushReplacementNamed(context, '/home');
+          },
           icon:const Icon(Icons.home_outlined),
         ),
       ),
