@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/screens/results/results.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 import 'package:flutter_auth/shared/vote.dart';
 import 'package:flutter_auth/shared/voteList.dart';

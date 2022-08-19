@@ -14,3 +14,12 @@ class VoteCategory{
 //   late int markedCandidate;
 //   late bool voted;
 // }
+
+
+class VoteData{
+  late final String candidate;
+  late final int total;
+
+  VoteData(this.candidate, this.total);
+
+}

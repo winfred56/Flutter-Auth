@@ -13,25 +13,25 @@ List<VoteCategory> getVoteList(){
       voteCategoryId: Uuid().v4(),
       voteTitle: "SRC Presidential Elections",
       candidates: [
-        {"Adu-Acheampong Winfred": 12022},
-        {"Adu Amankwah Kelvin": 22},
-        {"John Doe": 36},
+        {"Adu-Acheampong Winfred": 1222},
+        {"Adu Amankwah Kelvin": 282},
+        {"John Doe": 1016},
       ]));
   voteList.add(VoteCategory(
       voteCategoryId: Uuid().v4(),
       voteTitle: "Repulic Hall Presidential Elections",
       candidates: [
         {"Abraham Kwarteng Rockson": 122},
-        {"Phil Foden": 92},
-        {"Raheem Sterling": 26},
+        {"Phil Foden": 492},
+        {"Raheem Sterling": 726},
       ]));
   voteList.add(VoteCategory(
       voteCategoryId: Uuid().v4(),
       voteTitle: "College Of Science General Secretary Elections",
       candidates: [
-        {"Christiano Ronaldo": 12022},
-        {"Asamoah Gyan": 22},
-        {"Marcus Rashford": 36},
+        {"Christiano Ronaldo": 122},
+        {"Asamoah Gyan": 272},
+        {"Marcus Rashford": 396},
       ]));
   return voteList;
 }
