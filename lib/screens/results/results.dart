@@ -6,8 +6,14 @@ class Results extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Hello'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Live Feed"),
+        leading: IconButton(
+          onPressed: (){},
+          icon:const Icon(Icons.home_outlined),
+        ),
+      ),
     );
   }
 }
