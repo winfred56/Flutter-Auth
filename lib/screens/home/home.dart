@@ -4,6 +4,7 @@ import 'package:flutter_auth/services/auth_service.dart';
 import 'package:flutter_auth/shared/vote.dart';
 import 'package:flutter_auth/shared/voteList.dart';
 import 'package:flutter_auth/state/vote.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -52,55 +53,59 @@ class _HomeState extends State<Home> {
       body: Column(
         children: [
           Expanded(
-            child: Stepper(
-              currentStep: _currentStep,
-              type: StepperType.horizontal,
-
-              steps: [
-                const Step(
-                    title: Text('Choose'),
-                    content: VoteList(),
-                    isActive: true
-                ),
-                Step(
-                    title: const Text('Vote'),
-                    content: const VoteWidget(),
-                    isActive: _currentStep >= 1 ? true : false
-                ),
-              ],
-              onStepContinue: (){
-                print(_currentStep);
-                if (_currentStep == 0){
-                  if(step2Required()){
+            child: Theme(
+              data: ThemeData(
+                shadowColor: Colors.white,
+                primaryColor: Colors.white,
+                  colorScheme: ColorScheme.light(primary: HexColor('#732424')),
+            ),
+              child: Stepper(
+                currentStep: _currentStep,
+                type: StepperType.horizontal,
+                steps: [
+                  const Step(
+                      title: Text('Choose'),
+                      content: VoteList(),
+                      isActive: true
+                  ),
+                  Step(
+                      title: const Text('Vote'),
+                      content: const VoteWidget(),
+                      isActive: _currentStep >= 1 ? true : false
+                  ),
+                ],
+                onStepContinue: (){
+                  if (_currentStep == 0){
+                    if(step2Required()){
+                      setState(() {
+                        _currentStep = (_currentStep + 1) > 1 ? 1 : _currentStep+1;
+                      });
+                    }
+                    else{
+                      showSnackBar(context, "Select Category");
+                    }
+                  }
+                  else if (_currentStep >= 0){
+                    if(step3Required()){
+                      Navigator.pushReplacementNamed(context, '/results');
+                    }else{
+                      showSnackBar(context, "Please cast your vote!");
+                    }
+                  }
+                },
+                onStepCancel: (){
+                  print(_currentStep);
+                  if (_currentStep <=1 ){
                     setState(() {
-                      _currentStep = (_currentStep + 1) > 1 ? 1 : _currentStep+1;
+                      Provider.of<VoteState>(context, listen: false).activeVote = null;
+                      Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote = null;
                     });
                   }
-                  else{
-                    showSnackBar(context, "Select Category");
-                  }
-                }
-                else if (_currentStep >= 0){
-                  if(step3Required()){
-                    Navigator.pushReplacementNamed(context, '/results');
-                  }else{
-                    showSnackBar(context, "Please cast your vote!");
-                  }
-                }
-              },
-              onStepCancel: (){
-                if (_currentStep <=1 ){
                   setState(() {
-                    Provider.of<VoteState>(context, listen: false).activeVote = null;
+                    _currentStep = (_currentStep - 1) < 0 ? 0: _currentStep-1;
                   });
-                }
-                // else if (_currentStep <= 1){
-                //
-                // }
-                setState(() {
-                  _currentStep = (_currentStep - 1) < 0 ? 0: _currentStep-1;
-                });
-              },
+                },
+              ),
             ),
           )
         ],

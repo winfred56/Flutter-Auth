@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/models/voteCategories.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_auth/state/vote.dart';
 
@@ -19,7 +20,7 @@ class VoteList extends StatelessWidget {
           children: [
             for (VoteCategory vote in voteState.voteList )
               Card(
-                color: activeVoteCategoryId == vote.voteCategoryId ? Colors.red[100] : Colors.green[100],
+                color: activeVoteCategoryId == vote.voteCategoryId ? HexColor('#45334') : Colors.green[200],
                 child: ListTile(
                   title: Container(
                     padding: const EdgeInsets.all(15),
