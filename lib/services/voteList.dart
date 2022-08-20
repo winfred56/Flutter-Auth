@@ -10,7 +10,7 @@ List<VoteCategory> getVoteList(){
 
   // Manually adding vote categories
   voteList.add(VoteCategory(
-      voteCategoryId: Uuid().v4(),
+      voteCategoryId: const Uuid().v4(),
       voteTitle: "SRC Presidential Elections",
       candidates: [
         {"Adu-Acheampong Winfred": 1222},
@@ -18,7 +18,7 @@ List<VoteCategory> getVoteList(){
         {"John Doe": 1016},
       ]));
   voteList.add(VoteCategory(
-      voteCategoryId: Uuid().v4(),
+      voteCategoryId: const Uuid().v4(),
       voteTitle: "Repulic Hall Presidential Elections",
       candidates: [
         {"Abraham Kwarteng Rockson": 122},
@@ -26,7 +26,7 @@ List<VoteCategory> getVoteList(){
         {"Raheem Sterling": 726},
       ]));
   voteList.add(VoteCategory(
-      voteCategoryId: Uuid().v4(),
+      voteCategoryId: const Uuid().v4(),
       voteTitle: "College Of Science General Secretary Elections",
       candidates: [
         {"Christiano Ronaldo": 122},
@@ -34,7 +34,7 @@ List<VoteCategory> getVoteList(){
         {"Marcus Rashford": 396},
       ]));
   voteList.add(VoteCategory(
-      voteCategoryId: Uuid().v4(),
+      voteCategoryId: const Uuid().v4(),
       voteTitle: "Independence Hall Presidential Elections",
       candidates: [
         {"Luka Modric": 122},
@@ -42,7 +42,7 @@ List<VoteCategory> getVoteList(){
         {"Reece James": 266},
       ]));
   voteList.add(VoteCategory(
-      voteCategoryId: Uuid().v4(),
+      voteCategoryId: const Uuid().v4(),
       voteTitle: "Unity Hall Presidential Elections",
       candidates: [
         {"Antony Elanga": 122},
@@ -51,8 +51,8 @@ List<VoteCategory> getVoteList(){
         {"Antonio Rudiger ": 226},
       ]));
   voteList.add(VoteCategory(
-      voteCategoryId: Uuid().v4(),
-      voteTitle: "Unity Hall Presidential Elections",
+      voteCategoryId: const Uuid().v4(),
+      voteTitle: "Queens Hall Presidential Elections",
       candidates: [
         {"Kelvin DeBrynne": 122},
         {"William Shakespeare": 491},
@@ -61,7 +61,7 @@ List<VoteCategory> getVoteList(){
         {"Kwadwo Nkansah ": 517},
       ]));
   voteList.add(VoteCategory(
-      voteCategoryId: Uuid().v4(),
+      voteCategoryId: const Uuid().v4(),
       voteTitle: "Katanga Hall Presidential Elections",
       candidates: [
         {"Roberto Carlos": 121},
@@ -70,5 +70,47 @@ List<VoteCategory> getVoteList(){
         {"David Beckham ": 261},
         {"John Terry": 571},
       ]));
+  voteList.add(VoteCategory(
+      voteCategoryId: const Uuid().v4(),
+      voteTitle: "SCISA Presidential Elections",
+      candidates: [
+        {"Adu": 211},
+        {"Kwame": 249},
+        {"Winfred": 682},
+      ]));
+  voteList.add(VoteCategory(
+      voteCategoryId: const Uuid().v4(),
+      voteTitle: "SCISA General Secretary",
+      candidates: [
+        {"Ama": 211},
+        {"kofi": 249},
+        {"Yaw": 382},
+      ]));
+  voteList.add(VoteCategory(
+      voteCategoryId: const Uuid().v4(),
+      voteTitle: "KSB Women Commissioner Elections",
+      candidates: [
+        {"Akua": 211},
+        {"Adwoa": 249},
+        {"Tracy": 682},
+        {"Akua": 211},
+        {"Adwoa": 249},
+        {"Tracy": 682},
+        {"Akua": 211},
+        {"Adwoa": 249},
+        {"Tracy": 682},
+        {"Akua": 211},
+        {"Adwoa": 249},
+        {"Tracy": 682},
+      ]));
+  voteList.add(VoteCategory(
+      voteCategoryId: const Uuid().v4(),
+      voteTitle: "Something Elections",
+      candidates: [
+        {"Adu": 211},
+        {"Kwame": 249},
+        {"Winfred": 682},
+      ]));
+
   return voteList;
 }

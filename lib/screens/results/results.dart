@@ -24,11 +24,10 @@ class Results extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(3),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        child: Container(
-            padding: const EdgeInsets.all(20),
+        child: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 20,
             child: resultsWidget(context)),
