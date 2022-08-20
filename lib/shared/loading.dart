@@ -8,7 +8,7 @@ class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(99, 12, 12, 100),
+        backgroundColor: const Color.fromRGBO(99, 12, 12, 100),
         body: Center(
         child: SpinKitChasingDots(
         color: HexColor('#732424'),
