@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(99, 12, 12, 10),
-        title: const Text('Welcome To the Home Screen'),
+        title: const Text('ELECT'),
           actions: [
             TextButton.icon(onPressed: () async {
               await _auth.signOut();

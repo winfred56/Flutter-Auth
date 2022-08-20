@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter_auth/shared/loading.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_auth/state/vote.dart';
@@ -45,11 +46,16 @@ class Results extends StatelessWidget {
     VoteCategory? activeVote = Provider.of<VoteState>(context).activeVote;
 
     List<VoteData> data = <VoteData>[];
-
-    for (var candidate in activeVote!.candidates){
-      candidate.forEach((key, value) {
-        data.add(VoteData(key, value));
-      });
+    if (activeVote != null) {
+      for (var candidate in activeVote!.candidates) {
+        candidate.forEach((key, value) {
+          data.add(VoteData(key, value));
+        });
+      }
+    }
+    else{
+      const Loading();
+      //print("Loading");
     }
     return [
       charts.Series<VoteData, String>(

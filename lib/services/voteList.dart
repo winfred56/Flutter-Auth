@@ -1,7 +1,10 @@
-
+import 'package:provider/provider.dart';
 import 'package:flutter_auth/models/voteCategories.dart';
 import 'package:uuid/uuid.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_auth/state/vote.dart';
 
+import 'package:flutter/material.dart';
 
 // Get List of Categories and its candidates
 List<VoteCategory> getVoteList(){
@@ -99,3 +102,5 @@ List<VoteCategory> getVoteList(){
       ]));
   return voteList;
 }
+
+

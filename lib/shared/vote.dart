@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/models/voteCategories.dart';
+import 'package:flutter_auth/shared/loading.dart';
 import 'package:flutter_auth/state/vote.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,10 @@ class VoteWidget extends StatelessWidget {
         });
       }
     }
+    else{
+      const Loading();
+      //print('Loading');
+    }
 
     return Column(
       children: [
@@ -26,7 +31,7 @@ class VoteWidget extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.all(20),
             child: Text(
-              activeVote!.voteTitle,
+              activeVote?.voteTitle ?? '',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,

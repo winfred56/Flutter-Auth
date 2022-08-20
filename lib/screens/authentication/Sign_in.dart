@@ -83,11 +83,11 @@ class _SignInState extends State<SignIn> {
                                     onPressed: ()async{
                                       _formkey.currentState?.validate() ?? setState((){
                                         loading = true;
-                                        print(email);
-                                        print(password);
+                                        // print(email);
+                                        // print(password);
                                       });
                                       dynamic results = await _auth.signInWithEmailAndPassword(email, password);
-                                      print(results);
+                                      //print(results);
                                       if(results == null){
                                         setState((){
                                           loading = false;
