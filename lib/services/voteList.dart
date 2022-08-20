@@ -33,5 +33,42 @@ List<VoteCategory> getVoteList(){
         {"Asamoah Gyan": 272},
         {"Marcus Rashford": 396},
       ]));
+  voteList.add(VoteCategory(
+      voteCategoryId: Uuid().v4(),
+      voteTitle: "Independence Hall Presidential Elections",
+      candidates: [
+        {"Luka Modric": 122},
+        {"Karim Benzema": 541},
+        {"Reece James": 266},
+      ]));
+  voteList.add(VoteCategory(
+      voteCategoryId: Uuid().v4(),
+      voteTitle: "Unity Hall Presidential Elections",
+      candidates: [
+        {"Antony Elanga": 122},
+        {"De Gea": 492},
+        {"Harry Maguire": 326},
+        {"Antonio Rudiger ": 226},
+      ]));
+  voteList.add(VoteCategory(
+      voteCategoryId: Uuid().v4(),
+      voteTitle: "Unity Hall Presidential Elections",
+      candidates: [
+        {"Kelvin DeBrynne": 122},
+        {"William Shakespeare": 491},
+        {"William Faulkner": 826},
+        {"Ama Atta Aaido ": 226},
+        {"Kwadwo Nkansah ": 517},
+      ]));
+  voteList.add(VoteCategory(
+      voteCategoryId: Uuid().v4(),
+      voteTitle: "Katanga Hall Presidential Elections",
+      candidates: [
+        {"Roberto Carlos": 121},
+        {"Alex Ferguson": 429},
+        {"Jose Mourinho": 862},
+        {"David Beckham ": 261},
+        {"John Terry": 571},
+      ]));
   return voteList;
 }
