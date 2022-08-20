@@ -90,27 +90,12 @@ List<VoteCategory> getVoteList(){
       voteCategoryId: const Uuid().v4(),
       voteTitle: "KSB Women Commissioner Elections",
       candidates: [
-        {"Akua": 211},
-        {"Adwoa": 249},
-        {"Tracy": 682},
-        {"Akua": 211},
-        {"Adwoa": 249},
-        {"Tracy": 682},
-        {"Akua": 211},
-        {"Adwoa": 249},
-        {"Tracy": 682},
-        {"Akua": 211},
-        {"Adwoa": 249},
-        {"Tracy": 682},
-      ]));
-  voteList.add(VoteCategory(
-      voteCategoryId: const Uuid().v4(),
-      voteTitle: "Something Elections",
-      candidates: [
-        {"Adu": 211},
-        {"Kwame": 249},
-        {"Winfred": 682},
-      ]));
+        {"Freda": 29},
+        {"Stephanie": 62},
+        {"Winnifred": 41},
+        {"Adele": 69},
+        {"Magdalene": 235},
 
+      ]));
   return voteList;
 }
