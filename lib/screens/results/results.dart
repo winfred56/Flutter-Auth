@@ -7,7 +7,6 @@ import 'package:flutter_auth/state/vote.dart';
 import '../../models/voteCategories.dart';
 
 
-
 class Results extends StatelessWidget {
   const Results({Key? key}) : super(key: key);
 
@@ -47,7 +46,7 @@ class Results extends StatelessWidget {
 
     List<VoteData> data = <VoteData>[];
     if (activeVote != null) {
-      for (var candidate in activeVote!.candidates) {
+      for (var candidate in activeVote.candidates) {
         candidate.forEach((key, value) {
           data.add(VoteData(key, value));
         });
@@ -75,8 +74,6 @@ class Results extends StatelessWidget {
     ];
 
   }
-
-
 }
 
 

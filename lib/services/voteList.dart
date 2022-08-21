@@ -1,10 +1,7 @@
-import 'package:provider/provider.dart';
+
 import 'package:flutter_auth/models/voteCategories.dart';
 import 'package:uuid/uuid.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_auth/state/vote.dart';
 
-import 'package:flutter/material.dart';
 
 // Get List of Categories and its candidates
 List<VoteCategory> getVoteList(){
@@ -16,88 +13,51 @@ List<VoteCategory> getVoteList(){
       voteCategoryId: const Uuid().v4(),
       voteTitle: "SRC Presidential Elections",
       candidates: [
-        {"Adu-Acheampong Winfred": 1222},
-        {"Adu Amankwah Kelvin": 282},
-        {"John Doe": 1016},
-      ]));
-  voteList.add(VoteCategory(
-      voteCategoryId: const Uuid().v4(),
-      voteTitle: "Repulic Hall Presidential Elections",
-      candidates: [
-        {"Abraham Kwarteng Rockson": 122},
-        {"Phil Foden": 492},
-        {"Raheem Sterling": 726},
+        {"Winfred": 0},
+        {"Adu Kelvin": 0},
+        {"John": 0},
       ]));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
       voteTitle: "College Of Science General Secretary Elections",
       candidates: [
-        {"Christiano Ronaldo": 122},
-        {"Asamoah Gyan": 272},
-        {"Marcus Rashford": 396},
+        {"Ronaldo": 0},
+        {"Asamoah Gyan": 0},
+        {"Marcus Rashford": 0},
       ]));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
       voteTitle: "Independence Hall Presidential Elections",
       candidates: [
-        {"Luka Modric": 122},
-        {"Karim Benzema": 541},
-        {"Reece James": 266},
-      ]));
-  voteList.add(VoteCategory(
-      voteCategoryId: const Uuid().v4(),
-      voteTitle: "Unity Hall Presidential Elections",
-      candidates: [
-        {"Antony Elanga": 122},
-        {"De Gea": 492},
-        {"Harry Maguire": 326},
-        {"Antonio Rudiger ": 226},
-      ]));
-  voteList.add(VoteCategory(
-      voteCategoryId: const Uuid().v4(),
-      voteTitle: "Queens Hall Presidential Elections",
-      candidates: [
-        {"Kelvin DeBrynne": 122},
-        {"William Shakespeare": 491},
-        {"William Faulkner": 826},
-        {"Ama Atta Aaido ": 226},
-        {"Kwadwo Nkansah ": 517},
-      ]));
-  voteList.add(VoteCategory(
-      voteCategoryId: const Uuid().v4(),
-      voteTitle: "Katanga Hall Presidential Elections",
-      candidates: [
-        {"Roberto Carlos": 121},
-        {"Alex Ferguson": 429},
-        {"Jose Mourinho": 862},
-        {"David Beckham ": 261},
-        {"John Terry": 571},
+        {"Luka Modric": 0},
+        {"Karim Benzema": 0},
+        {"Reece James": 0},
       ]));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
       voteTitle: "SCISA Presidential Elections",
       candidates: [
-        {"Adu": 211},
-        {"Kwame": 249},
-        {"Winfred": 682},
+        {"Adu": 0},
+        {"Kwame": 0},
+        {"Winfred": 0},
       ]));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
       voteTitle: "SCISA General Secretary",
       candidates: [
-        {"Ama": 211},
-        {"kofi": 249},
-        {"Yaw": 382},
+        {"Ama": 0},
+        {"kofi": 0},
+        {"Yaw": 0},
       ]));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
       voteTitle: "KSB Women Commissioner Elections",
       candidates: [
-        {"Freda": 29},
-        {"Stephanie": 62},
-        {"Winnifred": 41},
-        {"Adele": 69},
-        {"Magdalene": 235},
+        {"Freda": 0},
+        {"Stephanie": 0},
+        {"Winnifred": 0},
+        {"Adele": 0},
+        {"Magdalene": 0},
 
       ]));
   return voteList;
