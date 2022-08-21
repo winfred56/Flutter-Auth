@@ -63,4 +63,3 @@ List<VoteCategory> getVoteList(){
   return voteList;
 }
 
-
