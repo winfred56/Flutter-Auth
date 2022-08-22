@@ -15,15 +15,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     Timer(
-      const Duration(seconds: 5),
+      const Duration(seconds: 3),
         (){
           Navigator.pushReplacementNamed(context, '/wrapper');
         }
     );
     return Container(
       color: HexColor('#732424'),
-      child: const Icon(Icons.how_to_vote_outlined,
-      )
+      child: const Center(
+        child: Icon(
+          Icons.how_to_vote_outlined,
+          color: Colors.white,
+          size: 256,
+        ),
+      ),
     );
   }
 }
