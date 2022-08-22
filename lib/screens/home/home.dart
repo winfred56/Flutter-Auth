@@ -6,6 +6,8 @@ import 'package:flutter_auth/state/vote.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
+import '../../services/voteList.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -21,9 +23,8 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     Future.microtask(() {
-
       Provider.of<VoteState>(context, listen: false).clearState();
-      Provider.of<VoteState>(context, listen: false).loadVoteList();
+      Provider.of<VoteState>(context, listen: false).loadVoteList(context);
     });
   }
   @override
@@ -51,18 +52,19 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: Theme(
+          if(Provider.of<VoteState>(context,listen: true).voteList != null)
+            Expanded(
+              child: Theme(
               data: ThemeData(
                 shadowColor: Colors.white,
                 primaryColor: Colors.white,
                   colorScheme: ColorScheme.light(primary: HexColor('#732424')),
-            ),
-              child: Stepper(
-                currentStep: _currentStep,
-                type: StepperType.horizontal,
-                steps: [
-                  const Step(
+              ),
+                child: Stepper(
+                  currentStep: _currentStep,
+                  type: StepperType.horizontal,
+                  steps: [
+                    const Step(
                       title: Text('Choose'),
                       content: VoteList(),
                       isActive: true
@@ -73,63 +75,72 @@ class _HomeState extends State<Home> {
                       isActive: _currentStep >= 1 ? true : false
                   ),
                 ],
-                onStepContinue: (){
-                  if (_currentStep == 0){
-                    if(step2Required()){
+                  onStepContinue: (){
+                    if (_currentStep == 0){
+                      if(step2Required()){
+                        setState(() {
+                          _currentStep = (_currentStep + 1) > 1 ? 1 : _currentStep+1;
+                        });
+                      }
+                      else{
+                        showSnackBar(context, "Select Category");
+                      }
+                    }
+                    else if (_currentStep >= 0){
+                      if(step3Required()){
+                        //Submit vote
+                        markMyVote();
+                        //See results graph
+                       Navigator.pushReplacementNamed(context, '/results');
+                      }else{
+                       showSnackBar(context, "Please cast your vote!");
+                      }
+                   }
+                  },
+                  onStepCancel: (){
+                    print(_currentStep);
+                    if (_currentStep <=1 ){
                       setState(() {
-                        _currentStep = (_currentStep + 1) > 1 ? 1 : _currentStep+1;
+                        Provider.of<VoteState>(context, listen: false).activeVote = null;
+                       Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote = null;
                       });
                     }
-                    else{
-                      showSnackBar(context, "Select Category");
-                    }
-                  }
-                  else if (_currentStep >= 0){
-                    if(step3Required()){
-                      Navigator.pushReplacementNamed(context, '/results');
-                    }else{
-                      showSnackBar(context, "Please cast your vote!");
-                    }
-                  }
-                },
-                onStepCancel: (){
-                  print(_currentStep);
-                  if (_currentStep <=1 ){
                     setState(() {
-                      Provider.of<VoteState>(context, listen: false).activeVote = null;
-                      Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote = null;
+                      _currentStep = (_currentStep - 1) < 0 ? 0: _currentStep-1;
                     });
-                  }
-                  setState(() {
-                    _currentStep = (_currentStep - 1) < 0 ? 0: _currentStep-1;
-                  });
-                },
+                  },
+                ),
               ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-  void showSnackBar(BuildContext context, String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(
-        msg,
-        style: const TextStyle(fontSize: 22),
-      ),
-    ));
-  }
+            )
+          ],
+        ),
+      );
+    }
+    void showSnackBar(BuildContext context, String msg) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+          msg,
+          style: const TextStyle(fontSize: 22),
+        ),
+      ));
+    }
 
-  bool step2Required(){
-    if(Provider.of<VoteState>(context, listen: false).activeVote == null){
-      return false;
+    bool step2Required(){
+      if(Provider.of<VoteState>(context, listen: false).activeVote == null){
+        return false;
+      }
+      return true;
     }
-    return true;
-  }
-  bool step3Required(){
-    if(Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == null){
-      return false;
+    bool step3Required(){
+      if(Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == null){
+        return false;
+      }
+      return true;
     }
-    return true;
+  void markMyVote() {
+    final voteId = Provider.of<VoteState>(context, listen: false).activeVote?.voteCategoryId;
+    final option = Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote;
+
+    markVote(voteId!, option!);
   }
 }

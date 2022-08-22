@@ -18,7 +18,7 @@ class VoteList extends StatelessWidget {
         String activeVoteCategoryId =Provider.of<VoteState>(context, listen: false).activeVote?.voteCategoryId ?? "" ;
         return Column(
           children: [
-            for (VoteCategory vote in voteState.voteList )
+            for (VoteCategory vote in voteState.voteList! )
               Card(
                 color: activeVoteCategoryId == vote.voteCategoryId ? HexColor('#45334') : Colors.green[200],
                 child: ListTile(

@@ -5,7 +5,7 @@ class VoteCategory{
   String voteTitle;
   List<Map<String, int>> candidates;
 
-  VoteCategory({required this.voteCategoryId, required this.voteTitle, required this.candidates});
+  VoteCategory({required this.voteCategoryId,   required this.voteTitle,  required this.candidates} );
 }
 
 // class Voter{

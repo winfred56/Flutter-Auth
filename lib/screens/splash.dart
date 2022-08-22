@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
       navigator: const Wrapper(),
-      durationInSeconds: 5,
+      durationInSeconds: 3,
     );
   }
 }

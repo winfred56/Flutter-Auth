@@ -5,22 +5,30 @@ import 'package:flutter_auth/services/voteList.dart';
 
 class VoteState with ChangeNotifier{
   // Create an instance of the VoteCategory class
-  List<VoteCategory> _voteList = <VoteCategory>[];
+  List<VoteCategory>? _voteList = <VoteCategory>[];
   VoteCategory? _activeVote;
   String? _selectedCandidateInActiveVote;
 
 
-  void loadVoteList()async{
-    _voteList = getVoteList();
-    notifyListeners();
+  void loadVoteList(BuildContext context) async{
+    // _voteList = getVoteList();
+    // notifyListeners();
+    getVoteListFromFirestore(context);
   }
 
   void clearState(){
+    _voteList = null;
     _activeVote = null;
     _selectedCandidateInActiveVote = null;
   }
 
-  List<VoteCategory> get voteList => _voteList;
+  List<VoteCategory>? get voteList => _voteList;
+
+  set voteList(newValue){
+    _voteList = newValue;
+    notifyListeners();
+  }
+
   VoteCategory? get activeVote => _activeVote;
   String? get selectedCandidateInActiveVote => _selectedCandidateInActiveVote;
 
