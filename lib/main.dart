@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_auth/screens/home/home.dart';
 import 'package:flutter_auth/screens/results/results.dart';
+import 'package:flutter_auth/screens/splash.dart';
 import 'package:flutter_auth/screens/wrapper.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -38,10 +39,11 @@ class MyApp extends StatelessWidget {
     ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Wrapper(),
+        home: const SplashScreen(),
         routes: {
           '/home': (context) => const Home(),
           '/results': (context) => const Results(),
+          '/wrapper': (context) => const Wrapper(),
         },
       )
     );
