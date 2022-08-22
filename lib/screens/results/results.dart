@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter_auth/services/voteList.dart';
 import 'package:flutter_auth/shared/loading.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,7 @@ class Results extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    retrieveActiveVoteData(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: HexColor('#732424'),
@@ -36,9 +38,13 @@ class Results extends StatelessWidget {
   }
 
   Widget resultsWidget(BuildContext context){
-    return charts.BarChart(
-      retrieveVoteResults(context),
-      animate: true,
+    return Consumer(
+        builder: (context, voteState, child){
+          return charts.BarChart(
+            retrieveVoteResults(context),
+            animate: true,
+          );
+        },
     );
   }
   List<charts.Series<VoteData, String>> retrieveVoteResults(BuildContext context){
@@ -72,7 +78,10 @@ class Results extends StatelessWidget {
           data: data
       )
     ];
-
+  }
+  void retrieveActiveVoteData(BuildContext context){
+    final voteId = Provider.of<VoteState>(context, listen: false).activeVote?.voteCategoryId;
+    retrieveMarkedVoteFromFirestore(voteId: voteId, context: context);
   }
 }
 
