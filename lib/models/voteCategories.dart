@@ -3,9 +3,14 @@
 class VoteCategory{
   String voteCategoryId;
   String voteTitle;
-  List<Map<String, int>> candidates;
+  List<dynamic> candidates;
 
   VoteCategory({required this.voteCategoryId,   required this.voteTitle,  required this.candidates} );
+
+  VoteCategory.fromJson(Map<String, dynamic> json)
+      : voteCategoryId = json['id'],
+        voteTitle = json['title'],
+        candidates = json['candidates'];
 }
 
 // class Voter{
