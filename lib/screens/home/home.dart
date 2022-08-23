@@ -141,6 +141,6 @@ class _HomeState extends State<Home> {
     final voteId = Provider.of<VoteState>(context, listen: false).activeVote?.voteCategoryId;
     final option = Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote;
 
-    markVote(voteId!, option!);
+    // markVote(voteId!, option!);
   }
 }
