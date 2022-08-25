@@ -14,7 +14,6 @@ class VoteState with ChangeNotifier{
     // _voteList = getVoteList();
     // notifyListeners();
     getVoteListFromFirestore(context);
-    // print(getVoteListFromFirestore(context));
   }
 
   void clearState(){
