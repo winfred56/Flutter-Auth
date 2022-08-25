@@ -5,6 +5,7 @@ import 'package:uuid/uuid.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../state/vote.dart';
 
+
 // Get List of Categories and its candidates
 // List<VoteCategory> getVoteList(){
 //   // create an instance of the VoteCategory class*(Model) to manually add votes
@@ -65,42 +66,49 @@ import '../state/vote.dart';
 //   return voteList;
 // }
 
+
 // firestore collection name
 const String kVotes = 'votes';
 const String kTitle = 'title';
 
-Future<List<VoteCategory>> getVoteListFromFirestore(
-    BuildContext context) async {
-  return FirebaseFirestore.instance.collection('votes').get().then((value) {
-    /// Loop over documents in collection
-    return value.docs
-        .map(
-          (e){
-            print(VoteCategory.fromJson(e.data()));
-            return VoteCategory.fromJson(e.data());
-          },
-        ).toList();
+void getVoteListFromFirestore(BuildContext context) async {
+  FirebaseFirestore.instance.collection(kVotes).get().then((snapshot) {
+    List<VoteCategory> voteList = <VoteCategory>[];
+
+    snapshot.docs.forEach((DocumentSnapshot document) {
+      voteList.add(mapFirestoreDocToVote(document));
+    });
+    Provider.of<VoteState>(context, listen: false).voteList = voteList;
+
+  });
+
+}
+VoteCategory mapFirestoreDocToVote(document) {
+  VoteCategory vote = VoteCategory(
+      voteCategoryId: document.documentID, voteTitle: document.title, candidates: [document],);
+  List<Map<String, int>> candidates = [];
+  document.data.forEach((key, value) {
+    if (key == kTitle) {
+      vote.voteTitle = value;
+    } else {
+      candidates.add({key: value});
+    }
+  });
+  vote.candidates = candidates;
+  return vote;
+}
+
+void markVote(String voteId, String option) async {
+  // increment value
+  FirebaseFirestore.instance.collection(kVotes).doc(voteId).update({
+    option: FieldValue.increment(1),
   });
 }
 
-
-QueryDocumentSnapshot<Map<String, dynamic>> mapFirestoreDocToVote(
-    QueryDocumentSnapshot<Map<String, dynamic>> document) {
-  /// Doc Data
-  return document;
+void retrieveMarkedVoteFromFirestore({String? voteId, BuildContext? context}) {
+  // Retrieve updated doc from server
+  FirebaseFirestore.instance.collection(kVotes).doc(voteId).get().then((document) {
+    Provider.of<VoteState>(context!, listen: false).activeVote =
+        mapFirestoreDocToVote(document);
+  });
 }
-
-// void markVote(String voteId, String option) async {
-//   // increment value
-//   FirebaseFirestore.instance.collection(kVotes).doc(voteId).update({
-//     option: FieldValue.increment(1),
-//   });
-// }
-//
-// void retrieveMarkedVoteFromFirestore({String? voteId, BuildContext? context}) {
-//   // Retrieve updated doc from server
-//   FirebaseFirestore.instance.collection(kVotes).doc(voteId).get().then((document) {
-//     Provider.of<VoteState>(context!, listen: false).activeVote =
-//         mapFirestoreDocToVote(document);
-//   });
-// }
