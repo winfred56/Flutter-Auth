@@ -14,41 +14,24 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    // Timer(
-    //   const Duration(seconds: 3),
-    //     (){
-    //       Navigator.pushReplacementNamed(context, '/wrapper');
-    //     }
-    // );
-    // return Container(
-    //   color: HexColor('#732424'),
-    //   child: const Center(
-    //     child: Icon(
-    //       Icons.how_to_vote_outlined,
-    //       color: Colors.white,
-    //       size: 256,
-    //     ),
-    //   ),
-    // );
     return EasySplashScreen(
       logo: Image.asset(
-        'assets/splash.png',
-        scale: 0.9,
+        'assets/fg.png',
       ),
-      title:  Text(
+      title:  const Text(
         "ELECT",
         style: TextStyle(
           fontSize: 67,
           fontWeight: FontWeight.bold,
-          color: HexColor('#732424'),
+          color: Colors.white,
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: HexColor('#732424'),
       showLoader: true,
-      loadingText: Text(
+      loadingText: const Text(
         "Loading...",
         style: TextStyle(
-          color: HexColor('#732424')
+          color: Colors.white
         ),
       ),
       navigator: const Wrapper(),
