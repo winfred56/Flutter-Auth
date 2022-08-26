@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/screens/profile/user_profile.dart';
 import 'package:hexcolor/hexcolor.dart';
+
+import '../../services/auth_service.dart';
 
 class SideMenuDrawer extends StatefulWidget {
   const SideMenuDrawer({Key? key}) : super(key: key);
@@ -9,6 +12,8 @@ class SideMenuDrawer extends StatefulWidget {
 }
 
 class _SideMenuDrawerState extends State<SideMenuDrawer> {
+  final AuthenticationService _auth = AuthenticationService();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -16,56 +21,72 @@ class _SideMenuDrawerState extends State<SideMenuDrawer> {
         children: [
           DrawerHeader(
               decoration: BoxDecoration(
-                //image: Image.asset("assets/fg.png"),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.centerRight,
+                    colors: [
+                      HexColor('#732424'),
+                      HexColor('#E6B0AA'),
+                      HexColor('#ffffff'),
+                    ]
+                ),
+                image: const DecorationImage(
+                    image: AssetImage(
+                        "assets/fg.png",
+                    )),
                 color: HexColor('#732424'),
               ),
               child: const Text("Menu")),
-          const ListTile(
-            leading: Icon(Icons.account_circle_rounded,
+          ListTile(
+            leading: const Icon(Icons.account_circle_rounded,
             color: Colors.black,),
-            title:Text(
+            title:const Text(
                 'Profile',
               style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20
               ),
             ),
+            onTap: ()=> Navigator.pushReplacementNamed(context,'/userProfile'),
           ),
           const SizedBox(height: 10,),
-          const ListTile(
-            leading: Icon(
+          ListTile(
+            leading: const Icon(
               Icons.info_outline_rounded,
               color: Colors.black,
             ),
-            title:Text('About',
+            title:const Text('About',
               style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20
               ),),
+            onTap: () => Navigator.pushReplacementNamed(context,'/about'),
           ),
           const SizedBox(height: 10,),
-          const ListTile(
-            leading: Icon(Icons.developer_mode_rounded,
+          ListTile(
+            leading: const Icon(Icons.developer_mode_rounded,
               color: Colors.black,
             ),
-            title:Text('Developers',
+            title:const Text('Developers',
               style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20
               ),),
+            onTap: () => Navigator.pushReplacementNamed(context,'/developers'),
           ),
           const SizedBox(height: 10,),
-          const Padding(
-            padding: EdgeInsets.only(top: 380),
+          Padding(
+            padding: const EdgeInsets.only(top: 380),
             child: ListTile(
-              leading: Icon(Icons.login_rounded,
+              leading: const Icon(Icons.login_rounded,
                 color: Colors.black,
               ),
-              title:Text('Logout',
+              title:const Text('Logout',
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 20
                 ),),
+              onTap: () => _auth.signOut(),
             ),
           ),
         ],

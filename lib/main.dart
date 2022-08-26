@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_auth/screens/home/home.dart';
 import 'package:flutter_auth/screens/profile/user_profile.dart';
 import 'package:flutter_auth/screens/results/results.dart';
+import 'package:flutter_auth/screens/sideScreens/about.dart';
+import 'package:flutter_auth/screens/sideScreens/developers.dart';
 import 'package:flutter_auth/screens/splash.dart';
 import 'package:flutter_auth/services/auth_service.dart';
 import 'package:flutter_auth/shared/vote.dart';
@@ -45,6 +47,8 @@ class MyApp extends StatelessWidget {
           '/home': (context) => const Home(),
           '/candidates': (context) => const VoteWidget(),
           '/userProfile': (context) => const UserProfile(),
+          '/about': (context) => const About(),
+          '/developers': (context) => const Developer(),
           '/results': (context) => const Results(),
           // '/wrapper': (context) => const Wrapper(),
         },

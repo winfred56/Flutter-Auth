@@ -79,7 +79,8 @@ class _HomeState extends State<Home> {
                   child: Row(
                     children: [
                       Image.asset(
-                        "assets/fg.png",
+                        "assets/src.png",
+                        height: 100,
                         alignment: Alignment.centerLeft,
                       ),
                       Container(
@@ -125,73 +126,6 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      // body:Column(
-      //   children: [
-      //
-      //     if(Provider.of<VoteState>(context,listen: true).voteList != null)
-      //       Expanded(
-      //         child: Theme(
-      //           data: ThemeData(
-      //             shadowColor: Colors.white,
-      //             primaryColor: Colors.white,
-      //             colorScheme: ColorScheme.light(primary: HexColor('#732424')),
-      //           ),
-      //           child: Stepper(
-      //             currentStep: _currentStep,
-      //             type: StepperType.horizontal,
-      //             steps: [
-      //               const Step(
-      //                   title: Text('Choose'),
-      //                   content: VoteList(),
-      //                   isActive: true
-      //               ),
-      //               Step(
-      //                   title: const Text('Vote'),
-      //                   content: const VoteWidget(),
-      //                   isActive: _currentStep >= 1 ? true : false
-      //               ),
-      //             ],
-      //             onStepContinue: (){
-      //               if (_currentStep == 0){
-      //                 if(step2Required()){
-      //                   setState(() {
-      //                     _currentStep = (_currentStep + 1) > 1 ? 1 : _currentStep+1;
-      //                   });
-      //                 }
-      //
-      //                 else{
-      //                   showSnackBar(context, "Select Category");
-      //                 }
-      //               }
-      //               else if (_currentStep >= 0){
-      //                 if(step3Required()){
-      //                   //Submit vote
-      //                   markMyVote();
-      //                   //VoteCategory.voted = true;
-      //                   //See results graph
-      //                   Navigator.pushReplacementNamed(context, '/results');
-      //                 }else{
-      //                   showSnackBar(context, "Please cast your vote!");
-      //                 }
-      //               }
-      //             },
-      //             onStepCancel: (){
-      //               print(_currentStep);
-      //               if (_currentStep <=1 ){
-      //                 setState(() {
-      //                   Provider.of<VoteState>(context, listen: false).activeVote = null;
-      //                   Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote = null;
-      //                 });
-      //               }
-      //               setState(() {
-      //                 _currentStep = (_currentStep - 1) < 0 ? 0: _currentStep-1;
-      //               });
-      //             },
-      //           ),
-      //         ),
-      //       )
-      //   ],
-      // ),
       );
     }
     void showSnackBar(BuildContext context, String msg) {
@@ -203,18 +137,6 @@ class _HomeState extends State<Home> {
       ));
     }
 
-    // bool step2Required(){
-    //   if(Provider.of<VoteState>(context, listen: false).activeVote == null){
-    //     return false;
-    //   }
-    //   return true;
-    // }
-    // bool step3Required(){
-    //   if(Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == null){
-    //     return false;
-    //   }
-    //   return true;
-    // }
   void markMyVote() {
     final voteId = Provider.of<VoteState>(context, listen: false).activeVote?.voteCategoryId;
     final option = Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote;
