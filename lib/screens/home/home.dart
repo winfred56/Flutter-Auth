@@ -6,6 +6,7 @@ import 'package:flutter_auth/state/vote.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import '../../services/voteList.dart';
+import '../drawer/drawer.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -28,41 +29,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const SideMenuDrawer(),
       appBar: AppBar(
+        centerTitle: true,
         elevation: 0,
         backgroundColor: HexColor('#732424'),
         title: const Padding(
           padding: EdgeInsets.all(10),
           child: Text('ELECT',),
         ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/userProfile');
-                  } ,
-                icon: const Icon(Icons.menu_rounded,
-              color: Colors.white,
-                size: 35,
-              ),),
-            )
-            // TextButton.icon(
-            //   onPressed: () async {
-            //   await _auth.signOut();
-            // },
-            //   icon: const Icon(
-            //     Icons.logout,
-            //     color: Colors.white,
-            //   ),
-            //   label: const Text(
-            //     "Sign Out",
-            //     style: TextStyle(
-            //       color: Colors.white,
-            //     ),
-            //   ),
-            // ),
-          ]
       ),
       body:Stack(
         children: [
