@@ -8,29 +8,33 @@ class VoteState with ChangeNotifier{
   List<VoteCategory>? _voteList = <VoteCategory>[];
   VoteCategory? _activeVote;
   String? _selectedCandidateInActiveVote;
+  VoteCategory? _voted;
 
 
   void loadVoteList(BuildContext context) async{
-    // _voteList = getVoteList();
-    // notifyListeners();
-    getVoteListFromFirestore(context);
+    _voteList = getVoteList();
+    notifyListeners();
+    // getVoteListFromFirestore(context);
   }
 
   void clearState(){
     _voteList = null;
     _activeVote = null;
     _selectedCandidateInActiveVote = null;
+    _voted = null;
   }
 
   List<VoteCategory>? get voteList => _voteList;
 
   set voteList(newValue){
     _voteList = newValue;
+
     notifyListeners();
   }
 
   VoteCategory? get activeVote => _activeVote;
   String? get selectedCandidateInActiveVote => _selectedCandidateInActiveVote;
+  VoteCategory? get voted => _voted;
 
   set activeVote(newValue) {
     _activeVote = newValue;
@@ -39,6 +43,11 @@ class VoteState with ChangeNotifier{
 
   set selectedCandidateInActiveVote(String? newValue){
     _selectedCandidateInActiveVote = newValue;
+    notifyListeners();
+  }
+
+  set voted(VoteCategory? newValue){
+    //_voted = newValue;
     notifyListeners();
   }
 }

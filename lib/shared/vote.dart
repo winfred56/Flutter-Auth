@@ -13,7 +13,7 @@ class VoteWidget extends StatelessWidget {
     VoteCategory? activeVote = Provider.of<VoteState>(context).activeVote;
     List<String> candidates = <String>[];
     if (activeVote != null) {
-      for (Map<String, int> candidate in activeVote.candidates) {
+      for (Map<String, int> candidate in activeVote.candidates!) {
         candidate.forEach((title, value) {
           candidates.add(title);
         });

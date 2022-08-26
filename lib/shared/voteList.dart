@@ -20,15 +20,18 @@ class VoteList extends StatelessWidget {
           children: [
             for (VoteCategory vote in voteState.voteList! )
               Card(
-                color: activeVoteCategoryId == vote.voteCategoryId ? HexColor('#45334') : Colors.green[200],
+                elevation: 0,
+                color: activeVoteCategoryId == vote.voteCategoryId ? HexColor('#45334') : Colors.green[50],
                 child: ListTile(
                   title: Container(
                     padding: const EdgeInsets.all(15),
                     child: Text(
-                      vote.voteTitle,
+                      vote.voteTitle!,
                       style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.black
+                        fontSize: 17,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                        fontStyle: FontStyle.italic
                       ),
                     ),
                   ),

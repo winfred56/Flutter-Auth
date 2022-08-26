@@ -1,11 +1,15 @@
 
 // VoteCategory Model
 class VoteCategory{
-  String voteCategoryId;
-  String voteTitle;
-  List<Map<String, int>> candidates;
 
-  VoteCategory({required this.voteCategoryId,   required this.voteTitle,  required this.candidates} );
+  VoteCategory({this.voteCategoryId, this.voteTitle, this.candidates});
+
+  String? voteCategoryId;
+  String? voteTitle;
+  List<Map<String, int>>? candidates;
+
+
+
 }
 
 // class Voter{

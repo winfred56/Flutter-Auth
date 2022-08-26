@@ -52,7 +52,7 @@ class Results extends StatelessWidget {
 
     List<VoteData> data = <VoteData>[];
     if (activeVote != null) {
-      for (var candidate in activeVote.candidates) {
+      for (var candidate in activeVote.candidates!) {
         candidate.forEach((key, value) {
           data.add(VoteData(key, value));
         });
