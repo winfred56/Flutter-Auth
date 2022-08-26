@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../../services/auth_service.dart';
+import '../drawer/drawer.dart';
 
 
 class UserProfile extends StatefulWidget {
@@ -17,30 +18,16 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: IconButton(
-              onPressed: ()=> Navigator.pushReplacementNamed(context, '/home'),
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                color: Colors.white,
-                size: 35,
-              ),),
-          ),
+        drawer: const SideMenuDrawer(),
+        appBar: AppBar(
+          centerTitle: true,
           elevation: 0,
           backgroundColor: HexColor('#732424'),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: IconButton(
-                onPressed: (){},
-                icon: const Icon(Icons.account_circle_outlined,
-                  color: Colors.white,
-                  size: 35,
-                ),),
-            )
-          ]
-      ),
+          title: const Padding(
+            padding: EdgeInsets.all(10),
+            child: Text('ELECT',),
+          ),
+        ),
       body: Stack(
         children: [
           Positioned(

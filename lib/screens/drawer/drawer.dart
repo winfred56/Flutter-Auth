@@ -75,6 +75,19 @@ class _SideMenuDrawerState extends State<SideMenuDrawer> {
             onTap: () => Navigator.pushReplacementNamed(context,'/developers'),
           ),
           const SizedBox(height: 10,),
+          ListTile(
+            leading: const Icon(
+              Icons.home_filled,
+              color: Colors.black,
+            ),
+            title:const Text('Home',
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20
+              ),),
+            onTap: () => Navigator.pushReplacementNamed(context,'/home'),
+          ),
+          const SizedBox(height: 10,),
           Padding(
             padding: const EdgeInsets.only(top: 380),
             child: ListTile(
