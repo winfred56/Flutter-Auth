@@ -37,6 +37,21 @@ class _SideMenuDrawerState extends State<SideMenuDrawer> {
                 color: HexColor('#732424'),
               ),
               child: const Text("Menu")),
+
+
+          ListTile(
+            leading: const Icon(
+              Icons.home_filled,
+              color: Colors.black,
+            ),
+            title:const Text('Home',
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20
+              ),),
+            onTap: () => Navigator.pushReplacementNamed(context,'/home'),
+          ),
+          const SizedBox(height: 10,),
           ListTile(
             leading: const Icon(Icons.account_circle_rounded,
             color: Colors.black,),
@@ -77,30 +92,15 @@ class _SideMenuDrawerState extends State<SideMenuDrawer> {
           const SizedBox(height: 10,),
           ListTile(
             leading: const Icon(
-              Icons.home_filled,
+              Icons.logout_rounded,
               color: Colors.black,
             ),
-            title:const Text('Home',
+            title:const Text('Logout',
               style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20
               ),),
-            onTap: () => Navigator.pushReplacementNamed(context,'/home'),
-          ),
-          const SizedBox(height: 10,),
-          Padding(
-            padding: const EdgeInsets.only(top: 380),
-            child: ListTile(
-              leading: const Icon(Icons.login_rounded,
-                color: Colors.black,
-              ),
-              title:const Text('Logout',
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20
-                ),),
-              onTap: () => _auth.signOut(),
-            ),
+            onTap: () => _auth.signOut(),
           ),
         ],
       ),

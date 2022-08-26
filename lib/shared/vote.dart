@@ -89,10 +89,10 @@ class VoteWidget extends StatelessWidget {
                     child: Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            padding: const EdgeInsets.only(left: 20),
                             child: Image.asset(
-                              "assets/fg.png",
-                              height: 110,
+                              "assets/src.png",
+                              height: 90,
                               alignment: Alignment.centerLeft,
                             ),
                           ),

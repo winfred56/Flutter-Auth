@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Image.asset(
                           "assets/src.png",
                           height: 90,
