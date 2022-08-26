@@ -69,7 +69,6 @@ class _HomeState extends State<Home> {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Card(
-
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -78,18 +77,22 @@ class _HomeState extends State<Home> {
                   shadowColor: Colors.white38,
                   child: Row(
                     children: [
-                      Image.asset(
-                        "assets/src.png",
-                        height: 100,
-                        alignment: Alignment.centerLeft,
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Image.asset(
+                          "assets/src.png",
+                          height: 90,
+                          alignment: Alignment.centerLeft,
+                        ),
                       ),
                       Container(
                         padding: const EdgeInsets.all(20),
                           child: const Text(
-                              "Let Us Choose Our Leaders",
+                              "Choose Your Leaders",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic
                             ),
                           ),
 

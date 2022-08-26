@@ -88,17 +88,22 @@ class VoteWidget extends StatelessWidget {
                     shadowColor: Colors.white38,
                     child: Row(
                         children: [
-                          Image.asset(
-                            "assets/fg.png",
-                            alignment: Alignment.centerLeft,
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Image.asset(
+                              "assets/fg.png",
+                              height: 110,
+                              alignment: Alignment.centerLeft,
+                            ),
                           ),
                           Container(
                             padding: const EdgeInsets.all(40),
                             child: const Text(
                               "Cast Your Vote",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 24,
                                 fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic
                               ),
                             ),
 
