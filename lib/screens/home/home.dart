@@ -103,9 +103,25 @@ class _HomeState extends State<Home> {
                   ),
                   elevation: 1,
                   shadowColor: Colors.white38,
-                  child: Image.asset(
-                      "assets/fg.png",
-                    alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/fg.png",
+                        alignment: Alignment.centerLeft,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                          child: const Text(
+                              "Let Us Choose Our Leaders",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                      ),
+
+                    ]
                   )
                 ),
               ),
