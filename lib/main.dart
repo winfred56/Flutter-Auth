@@ -5,6 +5,7 @@ import 'package:flutter_auth/screens/home/home.dart';
 import 'package:flutter_auth/screens/results/results.dart';
 import 'package:flutter_auth/screens/splash.dart';
 import 'package:flutter_auth/services/auth_service.dart';
+import 'package:flutter_auth/shared/vote.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_auth/state/vote.dart';
 
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         home: const SplashScreen(),
         routes: {
           '/home': (context) => const Home(),
+          '/candidates': (context) => const VoteWidget(),
           '/results': (context) => const Results(),
           // '/wrapper': (context) => const Wrapper(),
         },

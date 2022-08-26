@@ -6,8 +6,6 @@ import 'package:flutter_auth/shared/voteList.dart';
 import 'package:flutter_auth/state/vote.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
-
-import '../../models/voteCategories.dart';
 import '../../services/voteList.dart';
 
 class Home extends StatefulWidget {
@@ -20,7 +18,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   final AuthenticationService _auth = AuthenticationService();
-  int _currentStep = 0;
   @override
   void initState() {
     super.initState();
@@ -137,8 +134,16 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: [
                     if(Provider.of<VoteState>(context,listen: true).voteList != null)
-                      if(Provider.of<VoteState>(context,listen: true).voteList != null)
-                        const VoteList()
+                      // if(Provider.of<VoteState>(context,listen: true).voteList != null)
+                         InkWell(
+                             onTap: () {
+                           print("object");
+                           Navigator.push(context, MaterialPageRoute(
+                           builder: (context) => const VoteWidget()));},
+
+                             onDoubleTap: ()=> Navigator.pushReplacementNamed(context, '/candidates'),
+                            onLongPress: ()=> Navigator.pushReplacementNamed(context, '/candidates'),
+                            child: const VoteList())
                   ],
                 ),
               )
@@ -223,18 +228,18 @@ class _HomeState extends State<Home> {
       ));
     }
 
-    bool step2Required(){
-      if(Provider.of<VoteState>(context, listen: false).activeVote == null){
-        return false;
-      }
-      return true;
-    }
-    bool step3Required(){
-      if(Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == null){
-        return false;
-      }
-      return true;
-    }
+    // bool step2Required(){
+    //   if(Provider.of<VoteState>(context, listen: false).activeVote == null){
+    //     return false;
+    //   }
+    //   return true;
+    // }
+    // bool step3Required(){
+    //   if(Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == null){
+    //     return false;
+    //   }
+    //   return true;
+    // }
   void markMyVote() {
     final voteId = Provider.of<VoteState>(context, listen: false).activeVote?.voteCategoryId;
     final option = Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote;
