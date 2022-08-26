@@ -17,41 +17,41 @@ List<VoteCategory> getVoteList(){
       voteCategoryId: const Uuid().v4(),
       voteTitle: "SRC Presidential Elections",
       candidates: [
-        {"Winfred": 0},
-        {"Adu Kelvin": 0},
-        {"John": 0},
+        {"Winfred": 157},
+        {"Adu Kelvin": 57},
+        {"John": 34},
       ],
   ));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
-      voteTitle: "College Of Science General Secretary Elections",
+      voteTitle: "SRC Financial Secretary",
       candidates: [
-        {"Ronaldo": 0},
-        {"Asamoah Gyan": 0},
-        {"Marcus Rashford": 0},
+        {"Ronaldo": 87},
+        {"Asamoah Gyan": 2},
+        {"Marcus Rashford": 98},
       ],
   ));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
-      voteTitle: "Independence Hall Presidential Elections",
+      voteTitle: "SRC Women Commissioner",
       candidates: [
-        {"Luka Modric": 0},
-        {"Karim Benzema": 0},
-        {"Reece James": 0},
+        {"Luka Modric": 31},
+        {"Karim Benzema": 94},
+        {"Reece James": 39},
       ],
   ));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
-      voteTitle: "SCISA Presidential Elections",
+      voteTitle: "SRC P.R.O.",
       candidates: [
-        {"Adu": 0},
-        {"Kwame": 0},
-        {"Winfred": 0},
+        {"Adu": 23},
+        {"Kwame": 1},
+        {"Winfred": 51},
       ],
   ));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
-      voteTitle: "SCISA General Secretary",
+      voteTitle: "SRC Technical Adviser",
       candidates: [
         {"Ama": 10},
         {"kofi": 5},
@@ -60,14 +60,36 @@ List<VoteCategory> getVoteList(){
   ));
   voteList.add(VoteCategory(
       voteCategoryId: const Uuid().v4(),
-      voteTitle: "KSB Women Commissioner Elections",
+      voteTitle: "SRC General Secretary",
       candidates: [
-        {"Freda": 0},
-        {"Stephanie": 0},
-        {"Winnifred": 0},
-        {"Adele": 0},
-        {"Magdalene": 0},
+        {"Freda": 23},
+        {"Stephanie": 87},
+        {"Winnifred": 45},
+        {"Adele": 31},
+        {"Magdalene": 54},
       ],
+  ));
+  voteList.add(VoteCategory(
+    voteCategoryId: const Uuid().v4(),
+    voteTitle: "SRC Speaker Of Parliament",
+    candidates: [
+      {"Freda": 3},
+      {"Mike": 27},
+      {"Bright": 5},
+      {"Frank": 13},
+      {"John": 54},
+    ],
+  ));
+  voteList.add(VoteCategory(
+    voteCategoryId: const Uuid().v4(),
+    voteTitle: "SRC Organizer ",
+    candidates: [
+      {"Peter": 32},
+      {"Gabriel": 78},
+      {"Abraham": 54},
+      {"Isaac": 13},
+      {"Magdalene": 76},
+    ],
   ));
   return voteList;
 }
