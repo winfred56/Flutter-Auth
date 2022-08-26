@@ -47,21 +47,6 @@ class VoteWidget extends StatelessWidget {
                   size: 35,
                 ),),
             )
-            // TextButton.icon(
-            //   onPressed: () async {
-            //   await _auth.signOut();
-            // },
-            //   icon: const Icon(
-            //     Icons.logout,
-            //     color: Colors.white,
-            //   ),
-            //   label: const Text(
-            //     "Sign Out",
-            //     style: TextStyle(
-            //       color: Colors.white,
-            //     ),
-            //   ),
-            // ),
           ]
       ),
       body: Stack(

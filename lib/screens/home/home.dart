@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/services/auth_service.dart';
-import 'package:flutter_auth/shared/vote.dart';
 import 'package:flutter_auth/shared/voteList.dart';
 import 'package:flutter_auth/state/vote.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -40,8 +39,10 @@ class _HomeState extends State<Home> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: IconButton(
-                  onPressed: (){},
-              icon: const Icon(Icons.account_circle_outlined,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/userProfile');
+                  } ,
+                icon: const Icon(Icons.menu_rounded,
               color: Colors.white,
                 size: 35,
               ),),
@@ -138,11 +139,10 @@ class _HomeState extends State<Home> {
                          InkWell(
                              onTap: () {
                            print("object");
-                           Navigator.push(context, MaterialPageRoute(
-                           builder: (context) => const VoteWidget()));},
-
-                             onDoubleTap: ()=> Navigator.pushReplacementNamed(context, '/candidates'),
-                            onLongPress: ()=> Navigator.pushReplacementNamed(context, '/candidates'),
+                           showSnackBar(context, "Double Tap to Select ❣ ");
+                           },
+                            onDoubleTap: ()=> Navigator.pushReplacementNamed(context, '/candidates'),
+                            // onLongPress: ()=> Navigator.pushReplacementNamed(context, '/candidates'),
                             child: const VoteList())
                   ],
                 ),

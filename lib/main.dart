@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_auth/screens/home/home.dart';
+import 'package:flutter_auth/screens/profile/user_profile.dart';
 import 'package:flutter_auth/screens/results/results.dart';
 import 'package:flutter_auth/screens/splash.dart';
 import 'package:flutter_auth/services/auth_service.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/home': (context) => const Home(),
           '/candidates': (context) => const VoteWidget(),
+          '/userProfile': (context) => const UserProfile(),
           '/results': (context) => const Results(),
           // '/wrapper': (context) => const Wrapper(),
         },

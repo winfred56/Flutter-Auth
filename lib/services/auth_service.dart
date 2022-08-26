@@ -62,4 +62,8 @@ class AuthenticationService{
     }
   }
 
+  Future getCurrentUser() async{
+    return _auth.currentUser?.email;
+}
+
 }
