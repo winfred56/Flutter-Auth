@@ -1,3 +1,4 @@
+/// Import all dependencies, packages and classes
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/screens/authentication/authenticate.dart';
@@ -9,6 +10,7 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// if user is logged in display the Home else Log in or Sign up page screen
     final user = Provider.of<User?>(context);
     if (user == null){
       return const Authenticate();

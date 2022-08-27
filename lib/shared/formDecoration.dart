@@ -3,6 +3,8 @@ import 'package:hexcolor/hexcolor.dart';
 
 class ThemeHelper{
 
+  ///Text input Helper
+
   InputDecoration textInputDecoration([String lableText="", String hintText = ""]){
     return InputDecoration(
       labelText: lableText,
@@ -27,6 +29,7 @@ class ThemeHelper{
     ]);
   }
 
+  /// button decoration
   BoxDecoration buttonBoxDecoration(BuildContext context, [String color1 = "", String color2 = ""]) {
     Color c1 = Theme.of(context).primaryColor;
     Color c2 = Theme.of(context).colorScheme.secondary;
@@ -68,6 +71,8 @@ class ThemeHelper{
     );
   }
 
+  /// Alert decoration
+  ///Not Using for now
   AlertDialog alartDialog(String title, String content, BuildContext context) {
     return AlertDialog(
       title: Text(title),
@@ -89,7 +94,7 @@ class ThemeHelper{
   }
 
 }
-
+/// Form style
 class LoginFormStyle{
    static const InputDecoration formDecoration = InputDecoration(
       fillColor: Colors.white,

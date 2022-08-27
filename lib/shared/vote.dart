@@ -18,39 +18,45 @@ class VoteWidget extends StatelessWidget {
           candidates.add(title);
         });
       }
-    }
-    else{
+    } else {
       const Loading();
       //print('Loading');
     }
     return Scaffold(
+      /// Display app name ('ELECT')
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: IconButton(
-            onPressed: ()=> Navigator.pushReplacementNamed(context, '/home'),
-            icon: const Icon(Icons.arrow_back_ios_new_rounded,
-              color: Colors.white,
-              size: 35,
-            ),),
-        ),
+          leading: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: IconButton(
+              onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
+              icon: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.white,
+                size: 35,
+              ),
+            ),
+          ),
           elevation: 0,
           backgroundColor: HexColor('#732424'),
           actions: [
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: IconButton(
-                onPressed: (){},
-                icon: const Icon(Icons.account_circle_outlined,
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/userProfile');
+                },
+                icon: const Icon(
+                  Icons.account_circle_outlined,
                   color: Colors.white,
                   size: 35,
-                ),),
+                ),
+              ),
             )
-          ]
-      ),
+          ]),
+      /// Stack to position widgets
       body: Stack(
         children: [
+          /// Display (SRC ELECTIONS)
           Positioned(
             top: 0,
             bottom: 580,
@@ -71,6 +77,8 @@ class VoteWidget extends StatelessWidget {
               ),
             ),
           ),
+
+          /// Display SRC image
           Positioned(
             top: 60,
             child: SizedBox(
@@ -79,42 +87,37 @@ class VoteWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Card(
-
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     elevation: 1,
                     shadowColor: Colors.white38,
-                    child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Image.asset(
-                              "assets/src.png",
-                              height: 90,
-                              alignment: Alignment.centerLeft,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(40),
-                            child: const Text(
-                              "Cast Your Vote",
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic
-                              ),
-                            ),
-
-                          ),
-
-                        ]
-                    )
-                ),
+                    child: Row(children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Image.asset(
+                          "assets/src.png",
+                          height: 90,
+                          alignment: Alignment.centerLeft,
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(40),
+                        child: const Text(
+                          "Cast Your Vote",
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic),
+                        ),
+                      ),
+                    ])),
               ),
             ),
           ),
+
+          /// Display Candidates
           Positioned(
               top: 260,
               bottom: 0,
@@ -137,13 +140,15 @@ class VoteWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ),
-                    for(String candidate in candidates)
+
+                    /// Loop through candidates and display their names
+                    for (String candidate in candidates)
                       Card(
                         child: InkWell(
-                          onTap: (){
-                            Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote = candidate;
+                          onTap: () {
+                            Provider.of<VoteState>(context, listen: false)
+                                .selectedCandidateInActiveVote = candidate;
                             //See results graph
                             Navigator.pushReplacementNamed(context, '/results');
                           },
@@ -152,15 +157,20 @@ class VoteWidget extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  constraints: const BoxConstraints(minHeight: 60),
+                                  constraints:
+                                      const BoxConstraints(minHeight: 60),
                                   width: 8,
                                   color: Colors.greenAccent,
                                 ),
                                 Expanded(
                                   child: Container(
-                                    padding: const EdgeInsets.only(left: 10, right: 5),
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 5),
                                     alignment: Alignment.centerLeft,
-                                    color: Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == candidate
+                                    color: Provider.of<VoteState>(context,
+                                                    listen: false)
+                                                .selectedCandidateInActiveVote ==
+                                            candidate
                                         ? Colors.greenAccent
                                         : Colors.white,
                                     child: Text(
@@ -179,65 +189,9 @@ class VoteWidget extends StatelessWidget {
                       )
                   ],
                 ),
-              )
-          )
+              ))
         ],
       ),
     );
-    // return Column(
-    //   children: [
-    //     Card(
-    //       child: Container(
-    //         width: MediaQuery.of(context).size.width,
-    //         padding: const EdgeInsets.all(20),
-    //         child: Text(
-    //           activeVote?.voteTitle ?? '',
-    //           style: TextStyle(
-    //             fontWeight: FontWeight.bold,
-    //             fontSize: 24,
-    //             color: HexColor('#732424'),
-    //           ),
-    //         ),
-    //       ),
-    //
-    //     ),
-    //     for(String candidate in candidates)
-    //       Card(
-    //         child: InkWell(
-    //           onTap: (){
-    //             Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote = candidate;
-    //           },
-    //           child: IntrinsicHeight(
-    //             child: Row(
-    //               crossAxisAlignment: CrossAxisAlignment.start,
-    //               children: [
-    //                 Container(
-    //                   constraints: const BoxConstraints(minHeight: 60),
-    //                   width: 8,
-    //                   color: Colors.greenAccent,
-    //                 ),
-    //                 Expanded(
-    //                   child: Container(
-    //                     padding: const EdgeInsets.only(left: 10, right: 5),
-    //                     alignment: Alignment.centerLeft,
-    //                     color: Provider.of<VoteState>(context, listen: false).selectedCandidateInActiveVote == candidate
-    //                         ? Colors.greenAccent
-    //                         : Colors.white,
-    //                     child: Text(
-    //                       candidate,
-    //                       maxLines: 5,
-    //                       style: const TextStyle(
-    //                         fontSize: 18,
-    //                       ),
-    //                     ),
-    //                   ),
-    //                 )
-    //               ],
-    //             ),
-    //           ),
-    //         ),
-    //       ),
-    //   ],
-    // );
   }
 }
