@@ -21,33 +21,32 @@ class VoteList extends StatelessWidget {
           children: [
             /// Display Vote Category if any
             for (VoteCategory vote in voteState.voteList!)
-              InkWell(
-                onTap: () => showSnackBar(context, "Double Tap to Select ❣"),
-                child: Card(
-                  elevation: 0,
-                  color: activeVoteCategoryId == vote.voteCategoryId
-                      ? HexColor('#45334')
-                      : Colors.green[50],
-                  child: ListTile(
-                    title: Container(
-                      padding: const EdgeInsets.all(15),
-                      child: Text(
-                        vote.voteTitle!,
-                        style: const TextStyle(
-                            fontSize: 17,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                            fontStyle: FontStyle.italic),
-                      ),
+              Card(
+                elevation: 0,
+                color: activeVoteCategoryId == vote.voteCategoryId
+                    ? HexColor('#45334')
+                    : Colors.green[50],
+                child: ListTile(
+                  title: Container(
+                    padding: const EdgeInsets.all(15),
+                    child: Text(
+                      vote.voteTitle!,
+                      style: const TextStyle(
+                          fontSize: 17,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontStyle: FontStyle.italic),
                     ),
-                    selectedTileColor: Colors.transparent,
-                    onTap: () {
-                      voteState.activeVote = vote;
-                    },
-                    selected: activeVoteCategoryId == vote.voteCategoryId
-                        ? true
-                        : false,
                   ),
+                  selectedTileColor: Colors.transparent,
+                  onTap: () {
+                    voteState.activeVote = vote;
+                    print("object");
+                    showSnackBar(context, "Double Tap to Select ❣ ");
+                  },
+                  selected: activeVoteCategoryId == vote.voteCategoryId
+                      ? true
+                      : false,
                 ),
               )
           ],
