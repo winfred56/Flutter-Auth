@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 class VoteWidget extends StatelessWidget {
   const VoteWidget({Key? key}) : super(key: key);
+  VoteCategory? get vote => null;
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +150,8 @@ class VoteWidget extends StatelessWidget {
                           onTap: () {
                             Provider.of<VoteState>(context, listen: false)
                                 .selectedCandidateInActiveVote = candidate;
+                            print(candidate);
+                            print(vote?.voteTitle);
                             //See results graph
                             Navigator.pushReplacementNamed(context, '/results');
                           },

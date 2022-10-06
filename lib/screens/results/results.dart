@@ -95,6 +95,6 @@ class Results extends StatelessWidget {
     final voteId = Provider.of<VoteState>(context, listen: false)
         .activeVote
         ?.voteCategoryId;
-    retrieveMarkedVoteFromFirestore(voteId: voteId, context: context);
+    //retrieveMarkedVoteFromFirestore(voteId: voteId, context: context);
   }
 }

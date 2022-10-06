@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/models/voteCategories.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
-
 import '../state/vote.dart';
 
 /// Create a List of Categories and its candidates
 List<VoteCategory> getVoteList() {
-  // create an instance of the VoteCategory class*(Model) to manually add votes
+  /// create an instance of the VoteCategory class(Model) to manually add votes
   List<VoteCategory> voteList = <VoteCategory>[];
 
-  // Manually adding vote categories
+  /// Manually adding vote categories
   voteList.add(VoteCategory(
     voteCategoryId: const Uuid().v4(),
     voteTitle: "SRC Presidential Elections",
@@ -138,14 +137,14 @@ void markVote(String voteId, String option) async {
 }
 
 /// retrieveMarkedVoteFromCloudFirestore
-void retrieveMarkedVoteFromFirestore({String? voteId, BuildContext? context}) {
-  // Retrieve updated doc from server
-  FirebaseFirestore.instance
-      .collection(kVotes)
-      .doc(voteId)
-      .get()
-      .then((document) {
-    Provider.of<VoteState>(context!, listen: false).activeVote =
-        mapFirestoreDocToVote(document);
-  });
-}
+// void retrieveMarkedVoteFromFirestore({String? voteId, BuildContext? context}) {
+//   // Retrieve updated doc from server
+//   FirebaseFirestore.instance
+//       .collection(kVotes)
+//       .doc(voteId)
+//       .get()
+//       .then((document) {
+//     Provider.of<VoteState>(context!, listen: false).activeVote =
+//         mapFirestoreDocToVote(document);
+//   });
+// }

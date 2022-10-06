@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/models/voteCategories.dart';
+import 'package:flutter_auth/shared/vote.dart';
 import 'package:flutter_auth/state/vote.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -41,8 +42,17 @@ class VoteList extends StatelessWidget {
                   selectedTileColor: Colors.transparent,
                   onTap: () {
                     voteState.activeVote = vote;
-                    print("object");
-                    showSnackBar(context, "Double Tap to Select ❣ ");
+                    print("❣ ${vote.voteTitle}");
+                    showSnackBar(context, "Long press to Select ❣ ");
+                  },
+                  // onDoubleTap: () => Navigator.pushReplacementNamed(
+                  //     context, '/candidates'),
+                  onLongPress: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VoteWidget(),
+                        ));
                   },
                   selected: activeVoteCategoryId == vote.voteCategoryId
                       ? true

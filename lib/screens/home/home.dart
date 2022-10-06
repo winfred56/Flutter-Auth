@@ -138,12 +138,6 @@ class _HomeState extends State<Home> {
                             showSnackBar(context, "Double Tap to Select ❣ ");
                           },
 
-                          /// Move user to Screen listing the candidates
-                          onDoubleTap: () => Navigator.pushReplacementNamed(
-                              context, '/candidates'),
-                          onLongPress: () => Navigator.pushReplacementNamed(
-                              context, '/candidates'),
-
                           /// List the Vote categories
                           child: const VoteList())
                   ],

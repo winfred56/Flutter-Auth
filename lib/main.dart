@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/models/voteCategories.dart';
 import 'package:flutter_auth/screens/home/home.dart';
 import 'package:flutter_auth/screens/profile/user_profile.dart';
 import 'package:flutter_auth/screens/results/results.dart';

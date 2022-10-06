@@ -44,10 +44,17 @@ dependencies:
   uuid: ^3.0.6
   charts_flutter: ^0.12.0
   easy_splash_screen: ^1.0.4
+  flutter_launcher_icons: ^0.10.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/fg.png"
+  min_sdk_android: 19
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
